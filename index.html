@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>顺丰科技试用期工作汇报 - 金震宇</title>
+
+    <!-- 保留Reveal核心样式 -->
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+
+    <style>
+      :root {
+        --sf-red: #d81e06;
+        --sf-black: #1a1a1a;
+        --sf-gray: #333333;
+        --sf-light-gray: #f5f5f5;
+      }
+
+      /* 全局：让Reveal占满浏览器 */
+      .reveal {
+        background: white;
+        color: var(--sf-black);
+        width: 100vw !important; /* 强制占满视口宽度 */
+        height: 100vh !important; /* 强制占满视口高度 */
+        margin: 0 !important;
+      }
+
+      /* 幻灯片容器：占满Reveal容器，自适应窗口 */
+      .reveal .slides > section {
+        width: 100% !important; /* 占满父容器宽度 */
+        height: 100% !important; /* 占满父容器高度 */
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 2vw; /* 用视口单位做内边距，自适应窗口 */
+        box-sizing: border-box;
+      }
+
+      /* 标题通用样式 */
+      .reveal h1,
+      .reveal h2 {
+        color: var(--sf-black);
+        text-transform: none;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      /* ========== 封面页样式（自适应调整） ========== */
+      .cover-header-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 10vh; /* 用视口高度做黑色条高度，自适应窗口 */
+        background: var(--sf-black);
+        z-index: 1;
+      }
+
+      .cover-logo {
+        position: absolute;
+        top: 3vh; /* 用视口高度做间距，自适应 */
+        right: 3vw;
+        z-index: 2;
+      }
+      .cover-logo img {
+        width: 10vw; /* 用视口宽度做Logo尺寸，最大不超过150px */
+        max-width: 150px;
+        filter: brightness(0) invert(1);
+      }
+
+      .cover-content {
+        position: relative;
+        z-index: 2;
+        /* margin-top: 28vh;  */
+        text-align: center;
+        width: 100%;
+      }
+
+      .cover-title {
+        font-size: 5vw;
+        color: var(--sf-black);
+        border-bottom: 3px solid var(--sf-red);
+        padding-bottom: 1vh;
+        margin-bottom: 5vh;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cover-info {
+        font-size: 2.5vw;
+        line-height: 2;
+        color: var(--sf-gray);
+      }
+
+      .cover-info p {
+        margin: 3vh 3vh;
+        display: inline-block;
+      }
+
+      .cover-team {
+        position: absolute;
+        bottom: 5vh;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 1.5vw;
+        color: var(--sf-gray);
+        z-index: 2;
+      }
+
+      /* ========== 目录页样式（自适应调整） ========== */
+      .toc-page {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4vw;
+      }
+
+      .vertical-title {
+        writing-mode: vertical-rl;
+        font-size: 4vw;
+        font-weight: 700;
+        color: var(--sf-black);
+        border-bottom: 3px solid var(--sf-red);
+        padding-bottom: 2vh;
+      }
+
+      .toc-container {
+        width: 80%;
+        max-width: 900px;
+        /* background: var(--sf-light-gray); */
+        border-radius: 10px;
+        padding: 4vh 3vw;
+      }
+
+      .toc-list li {
+        font-size: 3vw;
+        margin: 3vh 0;
+        padding: 2vh 2vw;
+        background: white;
+        border-radius: 8px;
+        border-left: 5px solid var(--sf-red);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .toc-list li:hover {
+        cursor: pointer;
+        transform: translateX(8px); /* 向右轻微移动 */
+        box-shadow: 0 4px 12px rgba(216, 30, 6, 0.15); /* 加深阴影 */
+      }
+
+      .toc-page-num {
+        position: absolute;
+        bottom: 5vh;
+        right: 3vw;
+        color: #999;
+        font-size: 2vw;
+      }
+
+      .back-to-toc {
+        cursor: pointer;
+      }
+
+      /* ========== 新增：页面标题（如“自我介绍”）样式 ========== */
+      /* 放在顶部黑色横幅左侧，和logo水平对齐 */
+      .page-title {
+        position: absolute;
+        top: 3vh; /* 和logo的top一致 */
+        left: 3vw;
+        z-index: 2; /* 显示在黑色横幅上层 */
+        font-size: 2vw;
+        font-weight: 700;
+        color: white; /* 和logo颜色一致（白色） */
+      }
+
+      /* ========== 自我介绍页内容样式调整 ========== */
+      .intro-content {
+        width: 90%;
+      }
+
+      /* 上下部分的标题（如“基本概况”） */
+      .part-title {
+        font-size: 2.5vw;
+        font-weight: 700;
+        color: var(--sf-black);
+        margin-bottom: 2vh;
+        /* 加红色下划线，契合主题 */
+        border-bottom: 2px solid var(--sf-red);
+        display: inline-block;
+      }
+
+      /* 中间分割线 */
+      .divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--sf-gray),
+          transparent
+        );
+        margin: 4vh 0;
+      }
+
+      /* 个人信息：两列布局（更紧凑） */
+      .personal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vh 4vw;
+        justify-items: center;
+      }
+
+      /* 工作指导：两列布局 */
+      .mentor-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vh 4vw;
+        justify-items: center;
+      }
+
+      /* 信息项细节调整 */
+      .info-item {
+        font-size: 2vw;
+        line-height: 1.8;
+        text-align: left;
+      }
+      .info-item .label {
+        color: var(--sf-gray);
+        font-weight: 500;
+        min-width: 8vw;
+        /* display: inline-block; */
+      }
+
+      /* ========== 试用期工作概览页样式 ========== */
+      /* 改进后的样式示例 */
+      .work-overview-container {
+        display: flex;
+        gap: 3vw;
+        padding: 2vh 3vw;
+        width: 90%;
+        margin-top: 8vh;
+      }
+
+      .chart-area {
+        flex: 1.8;
+        /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
+        border-radius: 12px;
+        padding: 2vh 2vw;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        max-height: 60vh;
+        position: relative;
+        overflow: visible;
+      }
+
+      #workChart {
+        width: 100%;
+        height: 35vh;
+      }
+
+      .chart-note {
+        margin-top: 2vh;
+        margin-left: 2vw;
+        font-size: 1.3vw;
+        color: #495057;
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        font-weight: 500;
+      }
+
+      .stat-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2vh;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2.5vh 2vw;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        border-left: 5px solid #d81e06;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      .stat-title {
+        font-size: 1.8vw;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 2vh;
+        padding-bottom: 1vh;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .stat-item {
+        font-size: 1.5vw;
+        margin: 1.2vh 0;
+        display: flex;
+      }
+
+      .stat-value {
+        color: #d81e06;
+        font-weight: 700;
+      }
+      /* 需求交付效果概况页样式（修改后） */
+      /* 创建瀑布流效果 */
+      .delivery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2vw;
+        width: 90%;
+        margin: 8vh auto 0;
+        position: relative;
+      }
+
+      .delivery-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* 为每个项目添加不同的动画延迟，创造波浪效果 */
+      .delivery-item:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .delivery-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .delivery-item:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      .delivery-item:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .delivery-card {
+        width: 100%;
+        height: 25vh;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        border-top: 4px solid #d81e06;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+      }
+
+      /* 复杂度等级颜色 */
+      .delivery-item:nth-child(1) .delivery-card {
+        border-top-color: #4caf50; /* 简单 - 绿色 */
+      }
+
+      .delivery-item:nth-child(2) .delivery-card {
+        border-top-color: #2196f3; /* 中等 - 蓝色 */
+      }
+
+      .delivery-item:nth-child(3) .delivery-card {
+        border-top-color: #ff9800; /* 较复杂 - 橙色 */
+      }
+
+      .delivery-item:nth-child(4) .delivery-card {
+        border-top-color: #d81e06; /* 复杂 - 红色 */
+      }
+
+      .delivery-card::before {
+        content: attr(data-complexity);
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.2vh 0.8vw;
+        border-radius: 4px;
+        font-size: 1.2vw;
+        font-weight: bold;
+      }
+
+      .delivery-item:nth-child(1) .delivery-card::before {
+        content: "入门";
+        color: #4caf50;
+      }
+
+      .delivery-item:nth-child(2) .delivery-card::before {
+        content: "基础";
+        color: #2196f3;
+      }
+
+      .delivery-item:nth-child(3) .delivery-card::before {
+        content: "进阶";
+        color: #ff9800;
+      }
+
+      .delivery-item:nth-child(4) .delivery-card::before {
+        content: "专家";
+        color: #d81e06;
+      }
+
+      .delivery-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .delivery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .delivery-card:hover .delivery-img {
+        transform: scale(1.05);
+      }
+
+      .delivery-desc {
+        font-size: 1.6vw;
+        font-weight: 700;
+        color: var(--sf-black);
+        margin-top: 1.5vh;
+        text-align: center;
+        padding: 0 0.5vw;
+      }
+
+      /* 新增：展示区域样式 */
+      /* 预览区域的修改 */
+      .delivery-preview {
+        width: 80%;
+        height: 35vh;
+        margin: 5vh auto 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        display: none;
+        position: relative;
+        background: #f8f9fa;
+      }
+
+      .delivery-preview.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      /* 新增：可缩放和拖动的容器 */
+      .preview-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        cursor: grab;
+      }
+
+      .preview-container:active {
+        cursor: grabbing;
+      }
+
+      .preview-container.zooming {
+        cursor: zoom-out;
+      }
+
+      .preview-image-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: 0 0;
+        transition: none;
+      }
+
+      .delivery-preview-img {
+        max-width: none;
+        max-height: none;
+        object-fit: contain;
+        background: white;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      /* 预览控制按钮 */
+      .preview-controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        display: flex;
+        gap: 10px;
+      }
+
+      .preview-btn {
+        background: rgba(26, 26, 26, 0.7);
+        color: white;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: background 0.3s;
+      }
+
+      .preview-btn:hover {
+        background: rgba(26, 26, 26, 0.9);
+      }
+
+      .delivery-preview-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(26, 26, 26, 0.8);
+        color: white;
+        padding: 1vh 2vw;
+        font-size: 1.8vw;
+        font-weight: 600;
+      }
+
+      /* STAR方法页面样式 */
+      .star-container {
+        display: flex;
+        gap: 4vw;
+        width: 90%;
+        margin-top: 4vh;
+        height: 70vh;
+        align-items: stretch;
+      }
+
+      .star-content {
+        flex: 1.2; /* 文本区域占比更大 */
+        /* padding: 2vh 2vw; */
+      }
+
+      /* STAR方法页面样式 - 右侧固定尺寸容器 */
+      .star-placeholder {
+        align-self: center;
+        flex: 1;
+        position: relative;
+      }
+
+      #result-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 点击后标题样式变化 */
+      #show-iframe.active {
+        color: var(--sf-red);
+      }
+
+      .star-placeholder-inner {
+        width: 100%;
+        height: 100%;
+        background: var(--sf-light-gray);
+        border-radius: 8px;
+        border-left: 4px solid var(--sf-red);
+      }
+
+      /* 图片在固定容器内适配（不超出、不挤压） */
+      .star-placeholder-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* 保持图片比例，完整显示在容器内 */
+      }
+
+      .star-title {
+        font-size: 3vw;
+        color: var(--sf-black);
+        margin-bottom: 4vh;
+        border-bottom: 2px solid var(--sf-red);
+        padding-bottom: 1vh;
+        display: inline-block;
+      }
+
+      .star-subtitle {
+        font-size: 1.8vw;
+        color: var(--sf-black);
+        border-bottom: 2px solid var(--sf-red);
+        display: inline-block;
+        margin-top: 0.5vh;
+        padding: 0 0.8vw; /* 关键：给文字左右加间距，让下划线更舒展 */
+        padding-bottom: 0.3vh; /* 文字和下划线之间留一点空隙，更美观 */
+      }
+
+      .star-role-content {
+        font-size: 1.6vw;
+        line-height: 1.8;
+        text-align: left;
+      }
+
+      .star-section-title {
+        font-size: 2.2vw;
+        color: var(--sf-black);
+        margin-bottom: 2vh;
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+      }
+
+      /* 可点击标题样式 */
+      .star-clickable {
+        cursor: pointer;
+        /* color: var(--sf-red); */
+        transition: all 0.3s ease;
+      }
+
+      .star-clickable:hover {
+        transform: translateX(5px);
+      }
+
+      .star-arrow {
+        font-size: 1.5vw;
+        color: #666;
+        margin-left: 1vw;
+      }
+
+      .star-icon {
+        font-size: 2.5vw;
+      }
+
+      .star-text {
+        font-size: 1.6vw;
+        line-height: 1.8;
+        text-align: left;
+      }
+
+      .star-list {
+        margin-left: 3vw;
+        margin-bottom: 3vh;
+      }
+
+      .star-list li {
+        margin: 1vh 0;
+      }
+
+      .text-underline {
+        color: var(--sf-red);
+      }
+
+      /* 根节点（对应截图里的 .jmnode.root） */
+      #jsmind-container .jsmind-inner .theme-primary .root {
+        background-color: var(--sf-red) !important; /* 用顺丰红色 */
+        color: white !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+      }
+      /* 子节点（对应截图里的 .jmnode.node） */
+      #jsmind-container .jsmind-inner .theme-primary jmnode {
+        background-color: var(--sf-light-gray) !important; /* 浅灰背景 */
+        color: var(--sf-black) !important; /* 黑色文字 */
+        border: 1px solid var(--sf-red) !important; /* 红色边框 */
+        font-size: 16px !important;
+      }
+
+      /* 不足与收获总结页样式 */
+      .summary-container {
+        display: flex;
+        gap: 4vw;
+        width: 85%;
+        margin-top: 10vh;
+      }
+
+      .summary-column {
+        flex: 1;
+        background: var(--sf-light-gray);
+        border-radius: 8px;
+        padding: 3vh 2vw;
+      }
+
+      /* 不同列用不同颜色区分 */
+      .summary-column.deficiency {
+        border-left: 4px solid #666;
+      }
+
+      .summary-column.gain {
+        border-left: 4px solid var(--sf-red);
+      }
+
+      .summary-title {
+        font-size: 2.2vw;
+        color: var(--sf-black);
+        margin-bottom: 3vh;
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+        font-weight: 700;
+      }
+
+      .summary-icon {
+        font-size: 2.5vw;
+      }
+
+      .summary-list {
+        font-size: 1.8vw;
+        line-height: 2;
+      }
+
+      .summary-list li {
+        margin-bottom: 2vh;
+        position: relative;
+        padding-left: 1.5vw;
+      }
+
+      .summary-list li::before {
+        content: "•";
+        color: var(--sf-red);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+      }
+
+      /* ========== 不足与收获页（优化版） ========== */
+      .gain-deficiency-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 5vh auto 0;
+        min-height: 70vh;
+        perspective: 1000px;
+        gap: 4vw;
+      }
+
+      .stack-container {
+        position: relative;
+        width: 70%;
+        height: 60vh;
+      }
+
+      .stack-card {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        padding: 4vh 3vw;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stack-card.deficiency {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-left: 6px solid #666;
+        top: 0;
+        left: 0;
+        z-index: 3;
+      }
+
+      .stack-card.gain {
+        background: linear-gradient(135deg, #fff 0%, #fdf6f6 100%);
+        border-left: 6px solid #d81e06;
+        top: 3vh;
+        left: 3vw;
+        z-index: 2;
+      }
+
+      .stack-card.summary {
+        background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+        color: white;
+        top: 6vh;
+        left: 6vw;
+        z-index: 1;
+      }
+
+      .stack-card:hover {
+        z-index: 4;
+        transform: translate(-10px, -10px) scale(1.02);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+        margin-bottom: 3vh;
+      }
+
+      .card-icon {
+        font-size: 3vw;
+      }
+
+      .card-title {
+        font-size: 2.5vw;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .deficiency .card-title {
+        color: #666;
+      }
+
+      .gain .card-title {
+        color: #d81e06;
+      }
+
+      .summary .card-title {
+        color: white;
+      }
+
+      .card-content {
+        font-size: 1.8vw;
+        line-height: 1.8;
+        flex: 1;
+      }
+
+      .growth-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .growth-list li {
+        margin-bottom: 2vh;
+        padding-left: 1.5vw;
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 1vw;
+      }
+
+      .growth-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 2vw;
+      }
+
+      .deficiency .growth-list li::before {
+        color: #666;
+      }
+
+      .gain .growth-list li::before {
+        color: #d81e06;
+      }
+
+      .summary .growth-list li::before {
+        color: #ffd700;
+      }
+
+      .item-icon {
+        font-size: 1.8vw;
+        min-width: 2vw;
+      }
+
+      .summary-text {
+        font-size: 2vw;
+        font-weight: 500;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .radar-chart-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .radar-chart {
+        width: 100%;
+        height: 50vh;
+        position: relative;
+      }
+
+      #skillsRadarChart {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ========== 未来计划页样式 ========== */
+      .future-plan-container {
+        width: 100%;
+        margin: 8vh auto 0;
+        min-height: 70vh;
+        position: relative;
+      }
+
+      .roadmap-container {
+        width: 100%;
+        height: 65vh;
+        position: relative;
+        /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      /* 路线图路径 */
+      .roadmap-path {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        right: 5%;
+        height: 6px;
+        background: #d81e06;
+        border-radius: 3px;
+        transform: translateY(-50%);
+      }
+
+      .path-marker {
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #d81e06;
+        border: 4px solid white;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 2px #d81e06;
+        z-index: 2;
+      }
+
+      .path-marker.past {
+        background: #666;
+        box-shadow: 0 0 0 2px #666;
+      }
+
+      .path-marker.current {
+        background: #d81e06;
+        box-shadow: 0 0 0 2px #d81e06;
+        animation: pulse 2s infinite;
+      }
+
+      .path-marker.future {
+        background: #ccc;
+        box-shadow: 0 0 0 2px #ccc;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      /* 路线图节点内容 */
+      .roadmap-node {
+        position: absolute;
+        width: 25%;
+        background: white;
+        border-radius: 12px;
+        padding: 2vh 1.5vw;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        z-index: 3;
+        border-left: 4px solid #d81e06;
+      }
+
+      .roadmap-node:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(216, 30, 6, 0.15);
+      }
+
+      .node-position.top {
+        bottom: calc(50% + 30px);
+      }
+
+      .node-position.bottom {
+        top: calc(50% + 30px);
+      }
+
+      .node-marker-1 {
+        left: 10%;
+      }
+      .node-marker-2 {
+        left: 30%;
+      }
+      .node-marker-3 {
+        left: 50%;
+      }
+      .node-marker-4 {
+        left: 70%;
+      }
+
+      .node-header {
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+        margin-bottom: 1.5vh;
+      }
+
+      .node-icon {
+        font-size: 2vw;
+      }
+
+      .node-title {
+        font-size: 1.8vw;
+        font-weight: 700;
+        margin: 0;
+        color: #d81e06;
+      }
+
+      .node-timeframe {
+        font-size: 1.1vw;
+        color: #666;
+        margin-top: 0.3vh;
+      }
+
+      .node-content {
+        font-size: 1.3vw;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .node-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8vw;
+        margin-top: 1.5vh;
+      }
+
+      .node-tag {
+        background: #f8f9fa;
+        color: #d81e06;
+        padding: 0.3vh 0.8vw;
+        border-radius: 4px;
+        font-size: 1vw;
+      }
+
+      .progress-indicator {
+        position: absolute;
+        top: 2vh;
+        right: 2vw;
+        background: rgba(26, 26, 26, 0.8);
+        color: white;
+        padding: 1vh 1.5vw;
+        border-radius: 20px;
+        font-size: 1.2vw;
+        font-weight: 500;
+      }
+      /* 结尾 */
+      .particles-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40vh;
+        overflow: hidden;
+      }
+
+      #particlesCanvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      .team-grid {
+        position: absolute;
+        bottom: 10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 2vw;
+        width: 80%;
+      }
+
+      .team-member {
+        width: 12vh;
+        height: 12vh;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #d81e06;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px) scale(1.1);
+        box-shadow: 0 8px 20px rgba(216, 30, 6, 0.3);
+      }
+
+      .team-member:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .team-member:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .team-member:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .team-member:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .team-member:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+      .team-member:nth-child(6) {
+        animation-delay: 1s;
+      }
+
+      .team-member img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      /* ========== Reveal组件调整 ========== */
+      .reveal .progress {
+        background: rgba(0, 0, 0, 0.1);
+        color: var(--sf-red);
+      }
+      .reveal .controls {
+        color: var(--sf-red);
+        bottom: 2vh;
+        right: 2vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <div class="cover-header-bar"></div>
+        <div class="cover-logo">
+          <img src="sf-logo.png" alt="顺丰科技logo" />
+        </div>
+        <!-- 封面页 -->
+        <section>
+          <div class="cover-content">
+            <h1 class="cover-title">2025届大学生试用期工作汇报</h1>
+            <div class="cover-info">
+              <p>汇报人: 金震宇</p>
+              <p>时间: 2025.12.9</p>
+            </div>
+          </div>
+
+          <div class="cover-team">顺丰科技 · 前端组</div>
+        </section>
+
+        <!-- 目录页 -->
+        <section>
+          <div class="toc-page">
+            <div class="vertical-title">目录</div>
+            <div class="toc-container">
+              <ul class="toc-list">
+                <!-- 自我介绍对应第3页（封面=1、目录=2、自我介绍=3） -->
+                <li data-slide="3">自我介绍</li>
+                <!-- 工作回顾对应第4页 -->
+                <li data-slide="4">试用期工作回顾与总结</li>
+                <!-- 未来计划对应第5页 -->
+                <li data-slide="11">未来思考与计划</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- <div class="toc-page-num">
+            <small>第 2 页 / 共 <span id="total-slides">2</span> 页</small>
+          </div> -->
+        </section>
+
+        <!-- 自我介绍页 -->
+        <section>
+          <!-- 顶部黑色横幅左侧的标题（和logo水平对齐） -->
+          <div class="page-title back-to-toc">自我介绍</div>
+
+          <!-- 内容容器（上下结构） -->
+          <div class="intro-content">
+            <!-- 上部：基本概况 -->
+            <div class="intro-part">
+              <div class="part-title">基本概况</div>
+              <div class="info-grid personal-grid">
+                <div>
+                  <div class="info-item">
+                    <span class="label">姓名：</span>
+                    <span class="value">金震宇</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">籍贯：</span>
+                    <span class="value">湖北省孝感市</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">出生年月：</span>
+                    <span class="value">2004/04/04</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="info-item">
+                    <span class="label">专业：</span>
+                    <span class="value">软件工程</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">学历：</span>
+                    <span class="value">本科</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">毕业院校：</span>
+                    <span class="value">深圳大学</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 中间分割线 -->
+            <div class="divider"></div>
+
+            <!-- 下部：工作指导 -->
+            <div class="intro-part">
+              <div class="part-title">工作指导</div>
+              <div class="info-grid mentor-grid">
+                <div>
+                  <div class="info-item">
+                    <span class="label">直接上级：</span>
+                    <span class="value">窦彦斌</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">职位：</span>
+                    <span class="value">应用架构总工程师</span>
+                  </div>
+                </div>
+                <div style="margin-left: 6vw">
+                  <div class="info-item">
+                    <span class="label">导师：</span>
+                    <span class="value">刘烨</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="label">职位：</span>
+                    <span class="value">前端开发高级工程师</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 试用期工作概览页 -->
+        <section>
+          <!-- 顶部标题（带返回目录功能） -->
+          <div class="page-title back-to-toc">试用期开发工作概览</div>
+
+          <!-- 内容容器：左2/3图表 + 右1/3统计 -->
+          <div class="work-overview-container">
+            <!-- 左侧：柱状图区域 -->
+            <div class="chart-area">
+              <canvas id="workChart"></canvas>
+              <!-- 图表下方的版本备注（改成4个项，对应8-11月） -->
+              <div class="chart-note">
+                <span>• V5.4</span>
+                <span>• V5.5 SP1 SP3</span>
+                <span>• V5.6</span>
+                <span>• V5.7</span>
+              </div>
+            </div>
+
+            <!-- 右侧：统计模块（上下分布） -->
+            <div class="stat-area">
+              <!-- 需求统计 -->
+              <div class="stat-card">
+                <div class="stat-title">需求统计</div>
+                <div class="stat-item">
+                  参与版本共计：<span class="stat-value">6个</span>
+                </div>
+                <div class="stat-item">
+                  完成系统需求共计：<span class="stat-value">34个</span>
+                </div>
+                <div class="stat-item">
+                  优化历史问题：<span class="stat-value">4个</span>
+                </div>
+              </div>
+
+              <!-- 代码质量 -->
+              <div class="stat-card">
+                <div class="stat-title">代码质量</div>
+                <div class="stat-item">
+                  代码量共计：<span class="stat-value">6361行</span>
+                </div>
+                <div class="stat-item">
+                  转测缺陷共计：<span class="stat-value">2个一般BUG</span>
+                </div>
+                <div class="stat-item">
+                  生产缺陷共计：<span class="stat-value">0个</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 需求交付效果概况页（修改后） -->
+        <section>
+          <div class="page-title back-to-toc">需求交付效果概况</div>
+
+          <div class="delivery-grid">
+            <!-- 卡片1 -->
+            <div class="delivery-item">
+              <div class="delivery-card" data-complexity="入门">
+                <img src="1.png" alt="主信息新增字段" class="delivery-img" />
+              </div>
+              <p class="delivery-desc">主信息新增字段</p>
+            </div>
+
+            <!-- 卡片2 -->
+            <div class="delivery-item">
+              <div class="delivery-card" data-complexity="基础">
+                <img
+                  src="2.png"
+                  alt="发运订单新增备注弹窗"
+                  class="delivery-img"
+                />
+              </div>
+              <p class="delivery-desc">发运订单新增备注弹窗</p>
+            </div>
+
+            <!-- 卡片3 -->
+            <div class="delivery-item">
+              <div class="delivery-card" data-complexity="进阶">
+                <img
+                  src="3.png"
+                  alt="新增ToB包裹登记页签"
+                  class="delivery-img"
+                />
+              </div>
+              <p class="delivery-desc">新增ToB包裹登记页签</p>
+            </div>
+
+            <!-- 卡片4 -->
+            <div class="delivery-item">
+              <div class="delivery-card" data-complexity="专家">
+                <img
+                  src="4.png"
+                  alt="新增分理规则菜单页"
+                  class="delivery-img"
+                />
+              </div>
+              <p class="delivery-desc">新增分理规则菜单页</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- STAR方法第一页：任务背景(S) + 任务角色(T) -->
+        <section>
+          <div class="page-title back-to-toc">需求举例简述-STAR</div>
+
+          <!-- 主内容容器：左右布局 -->
+          <div class="star-container">
+            <!-- 左侧文本区域 -->
+            <div class="star-content">
+              <!-- 任务背景(S) -->
+              <div class="star-section">
+                <h4 class="star-section-title">
+                  <span class="star-icon">📋</span> 任务背景(S)：
+                </h4>
+                <div class="star-text">
+                  <p class="star-subtitle">V5.7【海发控】新增分理功能需求：</p>
+                  <ul class="star-list">
+                    <li>
+                      海发控是海南免税店业务项目，需支持按订单信息分拣以配合后续出库；
+                    </li>
+                    <li>
+                      同时针对全场景分理的规划适用于该项目的分拣需求，故基于规划新增分理功能；
+                    </li>
+                  </ul>
+
+                  <p class="star-subtitle">任务难点：</p>
+                  <ul class="star-list">
+                    <li>从0开始新增一个菜单项；</li>
+                    <li>改造条件表达式弹窗组件；</li>
+                    <li>页面交互逻辑和数据处理复杂；</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 任务角色(T) - 可点击跳转 -->
+              <div class="star-section">
+                <h4 class="star-section-title">
+                  <span class="star-icon">👤</span> 任务角色(T)：前端开发&联调；
+                </h4>
+              </div>
+            </div>
+
+            <!-- 右侧空白区域（原流程图位置） -->
+            <div class="star-placeholder">
+              <!-- 可留空或放置简单图标 -->
+              <div id="jump-to-action" class="star-placeholder-inner">
+                <img src="5.png" alt="需求流程图" />
+              </div>
+            </div>
+          </div>
+        </section>
+        >
+
+        <!-- STAR方法第三页：任务结果(R) + 点击展示实际网页 -->
+        <section>
+          <div class="page-title back-to-toc">需求举例简述-STAR</div>
+
+          <div class="star-container">
+            <!-- 左侧：任务结果(R) -->
+            <div class="star-content">
+              <div class="star-section">
+                <h4
+                  class="star-section-title star-clickable"
+                  id="jump-to-result"
+                >
+                  <span class="star-icon">✅</span> 任务结果(R)：
+                </h4>
+                <div class="star-text">
+                  <ul class="star-list">
+                    <li>
+                      成功完成海发控分理功能从0到1的开发，<span
+                        class="text-underline"
+                        >功能顺利上线</span
+                      >；
+                    </li>
+                    <li>
+                      支持按订单信息灵活分拣，<span class="text-underline"
+                        >满足海南免税店业务需求</span
+                      >，配合后续出库流程高效运转；
+                    </li>
+                    <li>
+                      改造的条件表达式弹窗组件<span class="text-underline"
+                        >可复用至其他类似需求</span
+                      >，提升后续开发效率；
+                    </li>
+                    <li>
+                      转测后仅1个轻微BUG，<span class="text-underline"
+                        >代码质量达标</span
+                      >，无生产问题反馈。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- iframe -->
+        <section>
+          <div class="page-title back-to-toc">需求举例简述-STAR</div>
+          <iframe
+            src="https://skawms.sit.sf-express.com/skawms/whse/rule/SortingRuleList"
+            style="
+              width: 100%;
+              height: 90vh;
+              padding-top: 10vh;
+              border: none;
+              border-radius: 8px;
+              position: absolute;
+            "
+          ></iframe>
+        </section>
+
+        <!-- 思维导图页HTML -->
+        <section>
+          <div class="page-title back-to-toc">试用期其他产出</div>
+          <div
+            id="jsmind-container"
+            style="
+              width: 100%;
+              height: 80vh;
+              margin-top: 15vh;
+              text-align: left;
+              overflow: hidden !important;
+            "
+          ></div>
+        </section>
+
+        <!-- 试用期不足与收获页（优化版） -->
+        <section>
+          <div class="page-title back-to-toc">试用期不足与收获</div>
+
+          <!-- 卡片堆叠布局 -->
+          <div class="gain-deficiency-container">
+            <!-- 雷达图可视化布局 -->
+            <div class="radar-chart-container">
+              <div class="radar-chart">
+                <canvas id="skillsRadarChart"></canvas>
+              </div>
+            </div>
+            <!-- 卡片堆叠布局 -->
+            <div class="stack-container">
+              <div class="stack-card deficiency">
+                <div class="card-header">
+                  <span class="card-icon">📝</span>
+                  <h3 class="card-title">待提升之处</h3>
+                </div>
+                <div class="card-content">
+                  <ul class="growth-list deficiency-list">
+                    <li>
+                      <span class="item-icon">📋</span>
+                      前端SOP规范梳理仍需完善
+                    </li>
+                    <li>
+                      <span class="item-icon">🔧</span>
+                      复杂业务场景的技术选型经验不足
+                    </li>
+                    <li>
+                      <span class="item-icon">🗣️</span>
+                      跨团队沟通效率有待提升
+                    </li>
+                    <li>
+                      <span class="item-icon">⚡</span>
+                      性能优化实践经验积累不够
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="stack-card gain">
+                <div class="card-header">
+                  <span class="card-icon">🌟</span>
+                  <h3 class="card-title">成长与收获</h3>
+                </div>
+                <div class="card-content">
+                  <ul class="growth-list gain-list">
+                    <li>
+                      <span class="item-icon">📊</span>
+                      掌握SKAWMS系统核心业务逻辑
+                    </li>
+                    <li>
+                      <span class="item-icon">🤝</span>
+                      提升团队协作与沟通能力
+                    </li>
+                    <li>
+                      <span class="item-icon">💡</span>
+                      沉淀前端开发最佳实践经验
+                    </li>
+                    <li>
+                      <span class="item-icon">🔍</span>
+                      建立系统化的问题分析思维
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="stack-card summary">
+                <div class="summary-text">
+                  每一次挑战都是成长的机会，每一次反思都是进步的阶梯
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 未来思考与计划页（渐进式路线图版） -->
+        <section>
+          <div class="page-title back-to-toc">未来思考与计划</div>
+
+          <div class="future-plan-container">
+            <div class="roadmap-container">
+              <!-- 进度指示器 -->
+              <div class="progress-indicator">个人发展规划路线图</div>
+
+              <!-- 路线图路径 -->
+              <div class="roadmap-path"></div>
+
+              <!-- 路径标记 -->
+              <div class="path-marker past" style="left: 15%"></div>
+              <div class="path-marker current" style="left: 35%"></div>
+              <div class="path-marker future" style="left: 55%"></div>
+              <div class="path-marker future" style="left: 75%"></div>
+
+              <!-- 路线图节点 -->
+              <div class="roadmap-node node-position top node-marker-1">
+                <div class="node-header">
+                  <span class="node-icon">🎯</span>
+                  <h3 class="node-title">现状分析</h3>
+                </div>
+                <div class="node-timeframe">当前阶段</div>
+                <div class="node-content">
+                  深入了解现有系统架构，掌握核心业务逻辑，积累实战经验。
+                </div>
+                <div class="node-tags">
+                  <span class="node-tag">系统熟悉</span>
+                  <span class="node-tag">业务理解</span>
+                </div>
+              </div>
+
+              <div class="roadmap-node node-position bottom node-marker-2">
+                <div class="node-header">
+                  <span class="node-icon">🚀</span>
+                  <h3 class="node-title">技能提升</h3>
+                </div>
+                <div class="node-timeframe">1-3个月</div>
+                <div class="node-content">
+                  深入学习Vue3+TS，优化前端性能，完善组件库建设。
+                </div>
+                <div class="node-tags">
+                  <span class="node-tag">Vue3+TS</span>
+                  <span class="node-tag">性能优化</span>
+                  <span class="node-tag">组件库</span>
+                </div>
+              </div>
+
+              <div class="roadmap-node node-position top node-marker-3">
+                <div class="node-header">
+                  <span class="node-icon">📈</span>
+                  <h3 class="node-title">项目主导</h3>
+                </div>
+                <div class="node-timeframe">3-6个月</div>
+                <div class="node-content">
+                  独立负责重要功能模块开发，参与技术方案设计与评审。
+                </div>
+                <div class="node-tags">
+                  <span class="node-tag">模块主导</span>
+                  <span class="node-tag">技术方案</span>
+                  <span class="node-tag">架构设计</span>
+                </div>
+              </div>
+
+              <div class="roadmap-node node-position bottom node-marker-4">
+                <div class="node-header">
+                  <span class="node-icon">🌟</span>
+                  <h3 class="node-title">团队贡献</h3>
+                </div>
+                <div class="node-timeframe">6-12个月</div>
+                <div class="node-content">
+                  成为团队技术骨干，分享经验，推动技术创新与最佳实践。
+                </div>
+                <div class="node-tags">
+                  <span class="node-tag">技术骨干</span>
+                  <span class="node-tag">知识分享</span>
+                  <span class="node-tag">创新驱动</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 结尾页 -->
+        <section>
+          <div class="cover-content">
+            <h1 class="cover-title back-to-toc">致谢</h1>
+          </div>
+
+          <div class="cover-team">顺丰科技 · SKAWMS系统研发团队</div>
+
+          <!-- 粒子效果容器 -->
+          <div class="particles-container">
+            <canvas id="particlesCanvas"></canvas>
+          </div>
+
+          <!-- 团队成员头像网格 -->
+          <div class="team-grid">
+            <div class="team-member">
+              <img src="member1.jpg" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="member2.jpg" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="member3.jpg" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="member4.jpg" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="member5.jpg" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="member6.jpg" alt="团队成员" />
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Reveal核心脚本 -->
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <!-- 引入Chart.js的CDN，用于渲染图表 -->
+    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <!-- 替换本地引入的Chart.js，用最新稳定版CDN -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <!-- 图表数值标签插件 -->
+    <script src="node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
+
+    <!-- 本地引入jsMind的样式（从node_modules读取） -->
+    <link rel="stylesheet" href="node_modules/jsmind/style/jsmind.css" />
+    <!-- 本地引入jsMind的脚本（从node_modules读取） -->
+    <script src="node_modules/jsmind/es6/jsmind.js"></script>
+    <script src="node_modules/jsmind/es6/jsmind.draggable-node.js"></script>
+
+    <!-- 初始化：自适应窗口配置 -->
+    <script>
+      let deck = new Reveal({
+        hash: true,
+        transition: "slide",
+        transitionSpeed: "normal",
+        margin: 0, // 去掉内边距，让内容占满窗口
+        minScale: 0.7, // 窗口缩小时最小缩放比例
+        maxScale: 1.2, // 窗口放大时最大缩放比例
+        width: "100%", // 宽度自适应
+        height: "100%", // 高度自适应
+      });
+
+      deck
+        .initialize({
+          plugins: [RevealHighlight, RevealNotes, RevealMarkdown],
+        })
+        .then(() => {
+          // 原更新总页数的代码
+          // document.getElementById("total-slides").textContent = deck.getTotalSlides();
+
+          // 新增：目录项点击跳转
+          document.querySelectorAll(".toc-list li").forEach((item) => {
+            item.addEventListener("click", () => {
+              // 获取目标幻灯片页码
+              const targetSlide = parseInt(item.dataset.slide) - 1;
+              // 跳转到对应页码
+              deck.slide(targetSlide);
+            });
+          });
+
+          // 跳转回目录页
+          document.querySelectorAll(".back-to-toc").forEach((item) => {
+            item.addEventListener("click", () => {
+              deck.slide(1); // 目录页对应的索引是1
+            });
+          });
+
+          // 在 Reveal 初始化之后添加以下代码
+
+          // 图片缩放和拖动功能
+          class ImagePreviewManager {
+            constructor() {
+              this.scale = 1;
+              this.minScale = 0.5;
+              this.maxScale = 5;
+              this.translateX = 0;
+              this.translateY = 0;
+              this.startX = 0;
+              this.startY = 0;
+              this.isDragging = false;
+              this.container = null;
+              this.imageWrapper = null;
+            }
+
+            init(container, imageWrapper) {
+              this.container = container;
+              this.imageWrapper = imageWrapper;
+
+              // 绑定事件
+              this.bindEvents();
+            }
+
+            bindEvents() {
+              // 鼠标滚轮缩放
+              this.container.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                const rect = this.container.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left;
+                const offsetY = e.clientY - rect.top;
+
+                const zoomIntensity = 0.1;
+                const wheel = e.deltaY < 0 ? 1 : -1;
+                const zoom = Math.exp(wheel * zoomIntensity);
+
+                // 计算新的缩放比例
+                const newScale = this.scale * zoom;
+
+                // 限制缩放范围
+                if (newScale >= this.minScale && newScale <= this.maxScale) {
+                  this.scale = newScale;
+
+                  // 调整位置以实现围绕鼠标位置缩放
+                  this.translateX -= (offsetX - this.translateX) * (zoom - 1);
+                  this.translateY -= (offsetY - this.translateY) * (zoom - 1);
+
+                  this.updateTransform();
+                }
+              });
+
+              // 鼠标拖动
+              this.container.addEventListener("mousedown", (e) => {
+                if (this.scale <= 1) return; // 只有在放大时才能拖动
+
+                this.isDragging = true;
+                this.startX = e.clientX - this.translateX;
+                this.startY = e.clientY - this.translateY;
+                this.container.classList.add("zooming");
+                e.preventDefault();
+              });
+
+              document.addEventListener("mousemove", (e) => {
+                if (!this.isDragging) return;
+
+                this.translateX = e.clientX - this.startX;
+                this.translateY = e.clientY - this.startY;
+                this.updateTransform();
+              });
+
+              document.addEventListener("mouseup", () => {
+                this.isDragging = false;
+                this.container.classList.remove("zooming");
+              });
+
+              // 方向键控制
+              document.addEventListener("keydown", (e) => {
+                if (!this.container.parentElement.classList.contains("active"))
+                  return;
+
+                const step = 20;
+                switch (e.key) {
+                  case "ArrowUp":
+                    this.translateY += step;
+                    break;
+                  case "ArrowDown":
+                    this.translateY -= step;
+                    break;
+                  case "ArrowLeft":
+                    this.translateX += step;
+                    break;
+                  case "ArrowRight":
+                    this.translateX -= step;
+                    break;
+                  case "+":
+                  case "=":
+                    this.zoomIn();
+                    break;
+                  case "-":
+                    this.zoomOut();
+                    break;
+                  case "0":
+                    this.reset();
+                    break;
+                  default:
+                    return;
+                }
+                this.updateTransform();
+              });
+            }
+
+            zoomIn() {
+              const newScale = Math.min(this.scale * 1.2, this.maxScale);
+              this.scale = newScale;
+              this.updateTransform();
+            }
+
+            zoomOut() {
+              const newScale = Math.max(this.scale / 1.2, this.minScale);
+              this.scale = newScale;
+              this.updateTransform();
+            }
+
+            reset() {
+              this.scale = 1;
+              this.translateX = 0;
+              this.translateY = 0;
+              this.updateTransform();
+            }
+
+            updateTransform() {
+              if (this.imageWrapper) {
+                this.imageWrapper.style.transform = `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale})`;
+              }
+            }
+          }
+
+          // 修改之前的点击事件处理代码
+          document.querySelectorAll(".delivery-item").forEach((item, index) => {
+            item.addEventListener("click", () => {
+              // 获取对应的图片和描述
+              const imgSrc = item.querySelector(".delivery-img").src;
+              const desc = item.querySelector(".delivery-desc").textContent;
+
+              // 查找或创建预览区域
+              let previewArea = document.querySelector(".delivery-preview");
+              if (!previewArea) {
+                previewArea = document.createElement("div");
+                previewArea.className = "delivery-preview";
+                previewArea.innerHTML = `
+            <div class="preview-container">
+              <div class="preview-image-wrapper">
+                <img class="delivery-preview-img" src="" alt="">
+              </div>
+            </div>
+            <div class="preview-controls">
+              <button class="preview-btn zoom-in">+</button>
+              <button class="preview-btn zoom-out">-</button>
+              <button class="preview-btn reset">↺</button>
+            </div>
+            <div class="delivery-preview-title"></div>
+          `;
+                document
+                  .querySelector(".delivery-grid")
+                  .parentElement.appendChild(previewArea);
+
+                // 初始化图片预览管理器
+                const previewManager = new ImagePreviewManager();
+                const container =
+                  previewArea.querySelector(".preview-container");
+                const imageWrapper = previewArea.querySelector(
+                  ".preview-image-wrapper"
+                );
+                previewManager.init(container, imageWrapper);
+
+                // 绑定控制按钮事件
+                previewArea
+                  .querySelector(".zoom-in")
+                  .addEventListener("click", () => {
+                    previewManager.zoomIn();
+                  });
+
+                previewArea
+                  .querySelector(".zoom-out")
+                  .addEventListener("click", () => {
+                    previewManager.zoomOut();
+                  });
+
+                previewArea
+                  .querySelector(".reset")
+                  .addEventListener("click", () => {
+                    previewManager.reset();
+                  });
+              }
+
+              // 更新预览区域内容
+              previewArea.querySelector(".delivery-preview-img").src = imgSrc;
+              previewArea.querySelector(".delivery-preview-title").textContent =
+                desc;
+
+              // 重置缩放和位置
+              const previewManager = new ImagePreviewManager();
+              const container = previewArea.querySelector(".preview-container");
+              const imageWrapper = previewArea.querySelector(
+                ".preview-image-wrapper"
+              );
+              if (container && imageWrapper) {
+                // 重置变换
+                imageWrapper.style.transform = "translate(0px, 0px) scale(1)";
+              }
+
+              // 显示预览区域
+              previewArea.classList.add("active");
+
+              // 滚动到预览区域
+              previewArea.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+              });
+            });
+          });
+
+          // 点击预览区域外部关闭预览
+          document.addEventListener("click", (e) => {
+            const previewArea = document.querySelector(".delivery-preview");
+            if (
+              previewArea &&
+              previewArea.classList.contains("active") &&
+              !e.target.closest(".delivery-item") &&
+              !e.target.closest(".delivery-preview")
+            ) {
+              previewArea.classList.remove("active");
+            }
+          });
+
+          // 为任务角色卡片添加悬停和点击效果
+          document.addEventListener("DOMContentLoaded", function () {
+            const roleCard = document.querySelector('[id="jump-to-action"]');
+
+            if (roleCard) {
+              // 添加悬停效果
+              roleCard.addEventListener("mouseenter", function () {
+                this.style.transform = "translateY(-8px) scale(1.02)";
+              });
+
+              roleCard.addEventListener("mouseleave", function () {
+                this.style.transform = "";
+              });
+
+              // 添加点击跳转效果
+              roleCard.addEventListener("click", function () {
+                // 添加点击动画
+                this.style.transform = "scale(0.95)";
+                setTimeout(() => {
+                  this.style.transform = "";
+                  // 执行原有的跳转逻辑
+                  const currentIndex = deck.getIndices().h;
+                  deck.slide(currentIndex + 1);
+                }, 150);
+              });
+            }
+
+            // 为整个页面添加进入动画
+            const starSections = document.querySelectorAll(".star-section");
+            starSections.forEach((section, index) => {
+              section.style.opacity = "0";
+              section.style.transform = "translateY(20px)";
+
+              setTimeout(() => {
+                section.style.transition =
+                  "opacity 0.6s ease, transform 0.6s ease";
+                section.style.opacity = "1";
+                section.style.transform = "translateY(0)";
+              }, 300 * index);
+            });
+          });
+
+          document
+            .getElementById("jump-to-result")
+            .addEventListener("click", () => {
+              // 假设行动页是当前页的下一页（索引+1）
+              const currentIndex = deck.getIndices().h;
+              deck.slide(currentIndex + 1);
+            });
+
+          const ctx = document.getElementById("workChart").getContext("2d");
+          new Chart(ctx, {
+            type: "bar",
+            plugins: [ChartDataLabels],
+            data: {
+              labels: ["8月", "9月", "10月", "11月"],
+              datasets: [
+                {
+                  label: "BUG",
+                  data: [0, 0, 0, 2],
+                  backgroundColor: "rgba(51, 51, 51, 0.7)",
+                  borderColor: "rgba(26, 26, 26, 1)",
+                  borderWidth: 1,
+                },
+                {
+                  label: "需求",
+                  data: [1, 10, 14, 9],
+                  backgroundColor: "#1a1a1a",
+                  borderColor: "rgba(51, 51, 51, 1)",
+                  borderWidth: 1,
+                },
+                {
+                  label: "工时",
+                  data: [2, 14, 22.5, 23],
+                  backgroundColor: "#d81e06",
+                  borderColor: "rgba(216, 30, 6, 1)",
+                  borderWidth: 1,
+                },
+                // 新增：工时趋势折线（初始隐藏）
+                {
+                  label: "工时趋势",
+                  type: "line", // 类型为折线
+                  data: [2, 14, 22.5, 23], // 和工时数据一致
+                  borderColor: "#d81e06", // 匹配工时的黑色
+                  backgroundColor: "transparent", // 折线无填充
+                  borderWidth: 2, // 折线粗细
+                  tension: 0.2, // 折线平滑度
+                  pointBackgroundColor: "#d81e06", // 数据点颜色
+                  pointRadius: 4, // 数据点大小
+                  hidden: true, // 初始隐藏
+                  order: 4, // 让折线显示在柱状图上方
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              // 选项1: 使用内置动画，逐个显示数据点
+              animation: {
+                duration: 1000,
+                easing: "easeInOutQuart",
+              },
+              transitions: {
+                show: {
+                  animations: {
+                    x: {
+                      from: 0,
+                    },
+                    y: {
+                      from: 0,
+                    },
+                  },
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: "数量",
+                    font: { size: 12 },
+                  },
+                  ticks: { font: { size: 11 } },
+                },
+                x: {
+                  ticks: { font: { size: 11 } },
+                },
+              },
+              plugins: {
+                datalabels: {
+                  anchor: "end", // 标签位置：柱子顶部
+                  align: "top",
+                  color: "rgba(26, 26, 26, 0.9)", // 数值颜色
+                  font: { size: 11, weight: "500" },
+                },
+                legend: {
+                  position: "top",
+                  labels: { font: { size: 12 } },
+                },
+                title: {
+                  display: true,
+                  text: "试用期BUG/需求/工时数量统计",
+                  font: { size: 14 },
+                },
+                tooltip: {
+                  enabled: true,
+                  mode: "index",
+                  intersect: false,
+                  backgroundColor: "rgba(26,26,26,0.9)",
+                  titleFont: { size: 12 },
+                  bodyFont: { size: 11 },
+                },
+              },
+              interaction: {
+                mode: "nearest",
+                axis: "x",
+                intersect: false,
+              },
+            },
+          });
+
+          // ========== 直接内联思维导图初始化逻辑 ==========
+          deck.on("slidechanged", (event) => {
+            console.log("当前页面索引：", event.indexh);
+          });
+
+          const container = document.getElementById("jsmind-container");
+
+          // 新版初始化配置
+          const jm = new jsMind({
+            container: "jsmind-container", // 容器ID
+            editable: false,
+            support_html: true, // 支持HTML内容
+            theme: "primary",
+            layout: {
+              direction: "right", // 从根节点向左右双向展开（默认是right，只向右）
+              hgap: 50, // 水平节点间距（默认更大，调小让布局更紧凑）
+              vgap: 30, // 垂直节点间距
+            },
+            // 添加视图控制
+            view: {
+              engine: "canvas", // 使用canvas引擎获得更好性能
+              zoom: {
+                min: 0.5,
+                max: 2.0,
+                step: 0.1,
+              },
+            },
+            // 添加快捷键支持
+            shortcut: {
+              enable: true,
+              handles: {
+                toggle_visible: {
+                  enable: true,
+                  handler: function (jm, e) {
+                    // 自定义折叠/展开行为
+                  },
+                },
+              },
+            },
+          });
+          // 1. 定义思维导图数据
+          const mindData = {
+            meta: { name: "试用期其他产出" },
+            format: "node_tree",
+            data: {
+              id: "root",
+              topic: "试用期其他产出",
+              children: [
+                {
+                  id: "1",
+                  topic: "文档输出",
+                  children: [
+                    {
+                      id: "1-1",
+                      topic: "组件使用说明文档",
+                      expanded: true,
+                      children: [
+                        {
+                          id: "1-1-1",
+                          topic: `<div style="display:flex;align-items:center;">
+                              <img src="5.png"/>
+                              <span>核心业务流程梳理</span></div>`,
+                        },
+                        { id: "1-1-2", topic: "组件使用说明文档" },
+                      ],
+                    },
+                    { id: "1-2", topic: "需求分析笔记", expanded: false },
+                    {
+                      id: "1-3",
+                      topic: "前端SOP梳理草案",
+                      expanded: false,
+                    },
+                  ],
+                  expanded: true,
+                },
+                {
+                  id: "2",
+                  topic: "系统与技术学习",
+                  children: [
+                    {
+                      id: "2-1",
+                      topic: "SKAWMS系统熟悉",
+                      children: [
+                        { id: "2-1-1", topic: "核心业务流程梳理" },
+                        { id: "2-1-2", topic: "组件代码逻辑分析" },
+                      ],
+                    },
+                    { id: "2-2", topic: "神策监控埋点实践" },
+                  ],
+                  expanded: false,
+                },
+                {
+                  id: "3",
+                  topic: "工程化实践",
+                  children: [
+                    { id: "3-1", topic: "治水流水线学习" },
+                    { id: "3-2", topic: "CI/CD部署流程实操" },
+                    { id: "3-3", topic: "代码规范与评审参与" },
+                  ],
+                  expanded: false,
+                },
+                {
+                  id: "4",
+                  topic: "团队协作",
+                  children: [
+                    { id: "4-1", topic: "需求评审会议参与" },
+                    { id: "4-2", topic: "跨团队沟通（产品/后端）" },
+                  ],
+                  expanded: false,
+                },
+              ],
+            },
+          };
+
+          // 渲染思维导图
+          if (container) {
+            jm.show(mindData);
+          }
+
+          const ctx1 = document
+            .getElementById("skillsRadarChart")
+            .getContext("2d");
+
+          // 创建雷达图
+          window.skillsRadarChart = new Chart(ctx1, {
+            type: "radar",
+            data: {
+              labels: [
+                "技术能力",
+                "业务理解",
+                "沟通协作",
+                "问题解决",
+                "创新能力",
+                "学习能力",
+              ],
+              datasets: [
+                {
+                  label: "当前水平",
+                  data: [70, 80, 65, 75, 60, 85],
+                  backgroundColor: "rgba(216, 30, 6, 0.2)",
+                  borderColor: "rgba(216, 30, 6, 1)",
+                  pointBackgroundColor: "rgba(216, 30, 6, 1)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(216, 30, 6, 1)",
+                  borderWidth: 2,
+                },
+                {
+                  label: "初期水平",
+                  data: [50, 60, 45, 55, 40, 65],
+                  backgroundColor: "rgba(26, 26, 26, 0.1)",
+                  borderColor: "rgba(26, 26, 26, 0.8)",
+                  pointBackgroundColor: "rgba(26, 26, 26, 0.8)",
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: "rgba(26, 26, 26, 1)",
+                  borderWidth: 2,
+                  borderDash: [5, 5],
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                r: {
+                  angleLines: {
+                    color: "rgba(0, 0, 0, 0.1)",
+                  },
+                  grid: {
+                    color: "rgba(0, 0, 0, 0.1)",
+                  },
+                  pointLabels: {
+                    font: {
+                      size: 14,
+                      weight: "bold",
+                    },
+                    color: "#333",
+                  },
+                  min: 0,
+                  max: 100,
+                  ticks: {
+                    stepSize: 20,
+                    backdropColor: "rgba(0, 0, 0, 0)",
+                    font: {
+                      size: 11,
+                    },
+                    color: "#666",
+                  },
+                },
+              },
+            },
+          });
+
+          // 粒子效果JavaScript代码
+          document.addEventListener("DOMContentLoaded", function () {
+            const canvas = document.getElementById("particlesCanvas");
+            const ctx = canvas.getContext("2d");
+
+            // 设置画布大小
+            function resizeCanvas() {
+              canvas.width = canvas.offsetWidth;
+              canvas.height = canvas.offsetHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener("resize", resizeCanvas);
+
+            // 粒子类
+            class Particle {
+              constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = `rgba(216, 30, 6, ${Math.random() * 0.5 + 0.1})`;
+              }
+
+              update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0)
+                  this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0)
+                  this.speedY = -this.speedY;
+              }
+
+              draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+
+            // 创建粒子数组
+            const particles = [];
+            const particleCount = 100;
+
+            for (let i = 0; i < particleCount; i++) {
+              particles.push(new Particle());
+            }
+
+            // 动画循环
+            function animate() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+              for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+              }
+
+              requestAnimationFrame(animate);
+            }
+
+            animate();
+          });
+        });
+    </script>
+  </body>
+</html>
