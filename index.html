@@ -421,7 +421,7 @@
       }
 
       .delivery-item:nth-child(4) .delivery-card::before {
-        content: "专家";
+        content: "现在";
         color: #d81e06;
       }
 
@@ -675,10 +675,25 @@
       }
       /* 子节点（对应截图里的 .jmnode.node） */
       #jsmind-container .jsmind-inner .theme-primary jmnode {
+        max-width: none !important; /* 取消最大宽度限制 */
         background-color: var(--sf-light-gray) !important; /* 浅灰背景 */
         color: var(--sf-black) !important; /* 黑色文字 */
         border: 1px solid var(--sf-red) !important; /* 红色边框 */
         font-size: 16px !important;
+      }
+
+      jmnode img {
+        width: auto; /* 固定宽度，根据需要调整 */
+        height: auto; /* 高度自适应，避免变形 */
+        max-width: 500px;
+        max-height: 500px; /* 限制最大高度，防止过高 */
+        object-fit: contain; /* 保持图片比例，完整显示内容 */
+        vertical-align: middle; /* 与文字对齐 */
+      }
+
+      .big-png {
+        max-width: 2000px;
+        max-height: 500px;
       }
 
       /* 不足与收获总结页样式 */
@@ -768,17 +783,17 @@
         flex-direction: column;
       }
 
-      .stack-card.deficiency {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-left: 6px solid #666;
+      .stack-card.gain {
+        background: linear-gradient(135deg, #fff 0%, #fdf6f6 100%);
+        border-left: 6px solid #d81e06;
         top: 0;
         left: 0;
         z-index: 3;
       }
 
-      .stack-card.gain {
-        background: linear-gradient(135deg, #fff 0%, #fdf6f6 100%);
-        border-left: 6px solid #d81e06;
+      .stack-card.deficiency {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-left: 6px solid #666;
         top: 3vh;
         left: 3vw;
         z-index: 2;
@@ -1364,7 +1379,7 @@
 
             <!-- 卡片4 -->
             <div class="delivery-item">
-              <div class="delivery-card" data-complexity="专家">
+              <div class="delivery-card" data-complexity="现在">
                 <img
                   src="4.png"
                   alt="新增分理规则菜单页"
@@ -1490,7 +1505,7 @@
 
         <!-- 思维导图页HTML -->
         <section>
-          <div class="page-title back-to-toc">试用期其他产出</div>
+          <div class="page-title back-to-toc">其他学习与产出</div>
           <div
             id="jsmind-container"
             style="
@@ -1505,7 +1520,7 @@
 
         <!-- 试用期不足与收获页（优化版） -->
         <section>
-          <div class="page-title back-to-toc">试用期不足与收获</div>
+          <div class="page-title back-to-toc">成长收获与反思</div>
 
           <!-- 卡片堆叠布局 -->
           <div class="gain-deficiency-container">
@@ -1517,33 +1532,6 @@
             </div>
             <!-- 卡片堆叠布局 -->
             <div class="stack-container">
-              <div class="stack-card deficiency">
-                <div class="card-header">
-                  <span class="card-icon">📝</span>
-                  <h3 class="card-title">待提升之处</h3>
-                </div>
-                <div class="card-content">
-                  <ul class="growth-list deficiency-list">
-                    <li>
-                      <span class="item-icon">📋</span>
-                      前端SOP规范梳理仍需完善
-                    </li>
-                    <li>
-                      <span class="item-icon">🔧</span>
-                      复杂业务场景的技术选型经验不足
-                    </li>
-                    <li>
-                      <span class="item-icon">🗣️</span>
-                      跨团队沟通效率有待提升
-                    </li>
-                    <li>
-                      <span class="item-icon">⚡</span>
-                      性能优化实践经验积累不够
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
               <div class="stack-card gain">
                 <div class="card-header">
                   <span class="card-icon">🌟</span>
@@ -1553,24 +1541,51 @@
                   <ul class="growth-list gain-list">
                     <li>
                       <span class="item-icon">📊</span>
-                      掌握SKAWMS系统核心业务逻辑
+                      熟悉了SKAWMS系统基本逻辑和开发流程
                     </li>
                     <li>
                       <span class="item-icon">🤝</span>
-                      提升团队协作与沟通能力
+                      提升了团队协作与沟通能力，保质保量完成任务
                     </li>
                     <li>
                       <span class="item-icon">💡</span>
-                      沉淀前端开发最佳实践经验
+                      学习沉淀了前端开发最佳实践经验，前端综合实力有所提升
                     </li>
                     <li>
                       <span class="item-icon">🔍</span>
-                      建立系统化的问题分析思维
+                      培养建立了系统化的问题分析思维，解决问题更高效
                     </li>
                   </ul>
                 </div>
               </div>
 
+              <div class="stack-card deficiency">
+                <div class="card-header">
+                  <span class="card-icon">📝</span>
+                  <h3 class="card-title">待提升之处</h3>
+                </div>
+                <div class="card-content">
+                  <ul class="growth-list deficiency-list">
+                    <li>
+                      <span class="item-icon">📋</span>
+                      输出笔记需要保持更新，养成良好习惯
+                    </li>
+                    <li>
+                      <span class="item-icon">🔧</span>
+                      进一步理解复杂业务场景，掌握更多技术细节
+                    </li>
+                    <li>
+                      <span class="item-icon">🗣️</span>
+                      提升跨部门沟通与协调能力，加强需求理解
+                    </li>
+                    <li>
+                      <span class="item-icon">⚡</span>
+                      性能优化实践经验积累不够，工程化能力需加强
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
               <div class="stack-card summary">
                 <div class="summary-text">
                   每一次挑战都是成长的机会，每一次反思都是进步的阶梯
@@ -1681,22 +1696,40 @@
           <!-- 团队成员头像网格 -->
           <div class="team-grid">
             <div class="team-member">
-              <img src="member1.jpg" alt="团队成员" />
+              <img src="窦彦斌.png" alt="团队成员" />
             </div>
             <div class="team-member">
-              <img src="member2.jpg" alt="团队成员" />
+              <img src="刘烨.png" alt="团队成员" />
             </div>
             <div class="team-member">
-              <img src="member3.jpg" alt="团队成员" />
+              <img src="蒋健.png" alt="团队成员" />
             </div>
             <div class="team-member">
-              <img src="member4.jpg" alt="团队成员" />
+              <img src="张宁.png" alt="团队成员" />
             </div>
             <div class="team-member">
-              <img src="member5.jpg" alt="团队成员" />
+              <img src="吴梓慕.png" alt="团队成员" />
             </div>
             <div class="team-member">
-              <img src="member6.jpg" alt="团队成员" />
+              <img src="叶俊宽.png" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="吴庆龙.png" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="龚文义.png" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="蔡梦霞.png" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src="王飞亭.png" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src=".png" alt="团队成员" />
+            </div>
+            <div class="team-member">
+              <img src=".png" alt="团队成员" />
             </div>
           </div>
         </section>
@@ -1709,17 +1742,17 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <!-- 引入Chart.js的CDN，用于渲染图表 -->
-    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <!-- 替换本地引入的Chart.js，用最新稳定版CDN -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <!-- 图表数值标签插件 -->
-    <script src="node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 
     <!-- 本地引入jsMind的样式（从node_modules读取） -->
-    <link rel="stylesheet" href="node_modules/jsmind/style/jsmind.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.6.5/style/jsmind.css" />
     <!-- 本地引入jsMind的脚本（从node_modules读取） -->
-    <script src="node_modules/jsmind/es6/jsmind.js"></script>
-    <script src="node_modules/jsmind/es6/jsmind.draggable-node.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsmind@0.6.5/es6/jsmind.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsmind@0.6.5/es6/jsmind.draggable-node.js"></script>
 
     <!-- 初始化：自适应窗口配置 -->
     <script>
@@ -2198,39 +2231,12 @@
           });
           // 1. 定义思维导图数据
           const mindData = {
-            meta: { name: "试用期其他产出" },
+            meta: { name: "其他学习与产出" },
             format: "node_tree",
             data: {
               id: "root",
-              topic: "试用期其他产出",
+              topic: "其他学习与产出",
               children: [
-                {
-                  id: "1",
-                  topic: "文档输出",
-                  children: [
-                    {
-                      id: "1-1",
-                      topic: "组件使用说明文档",
-                      expanded: true,
-                      children: [
-                        {
-                          id: "1-1-1",
-                          topic: `<div style="display:flex;align-items:center;">
-                              <img src="5.png"/>
-                              <span>核心业务流程梳理</span></div>`,
-                        },
-                        { id: "1-1-2", topic: "组件使用说明文档" },
-                      ],
-                    },
-                    { id: "1-2", topic: "需求分析笔记", expanded: false },
-                    {
-                      id: "1-3",
-                      topic: "前端SOP梳理草案",
-                      expanded: false,
-                    },
-                  ],
-                  expanded: true,
-                },
                 {
                   id: "2",
                   topic: "系统与技术学习",
@@ -2239,11 +2245,18 @@
                       id: "2-1",
                       topic: "SKAWMS系统熟悉",
                       children: [
-                        { id: "2-1-1", topic: "核心业务流程梳理" },
+                        { id: "2-1-1", topic: "通用系统流程梳理" },
                         { id: "2-1-2", topic: "组件代码逻辑分析" },
                       ],
                     },
-                    { id: "2-2", topic: "神策监控埋点实践" },
+                    {
+                      id: "2-2",
+                      topic: "hub模块熟悉",
+                      children: [
+                        { id: "2-2-1", topic: "monorepo方案与微前端方案熟悉" },
+                        { id: "2-2-2", topic: "主子系统通信方案学习" },
+                      ],
+                    },
                   ],
                   expanded: false,
                 },
@@ -2252,8 +2265,54 @@
                   topic: "工程化实践",
                   children: [
                     { id: "3-1", topic: "治水流水线学习" },
-                    { id: "3-2", topic: "CI/CD部署流程实操" },
+                    { id: "3-2", topic: "神策监控平台使用" },
                     { id: "3-3", topic: "代码规范与评审参与" },
+                    { id: "3-4", topic: "SKA 前端出库运营参数梳理",
+                      children: [
+                        {
+                          id: "3-4-1",
+                          topic: `<img src="运营参数.png"/>`,
+                        },
+                      ],
+                      expanded: true,
+                     },
+                  ],
+                  expanded: false,
+                },
+                {
+                  id: "1",
+                  topic: "文档输出",
+                  children: [
+                    {
+                      id: "1-1",
+                      topic: "系统使用说明文档",
+                      expanded: false,
+                      children: [
+                        { id: "1-1-1", topic: `<img src="笔记.png"/>` },
+                      ],
+                    },
+
+                    {
+                      id: "1-2",
+                      topic: "版本需求分析笔记",
+                      expanded: false,
+                      children: [
+                        { id: "1-2-1", topic: `<img src="需求分析.png"/>` },
+                      ],
+                    },
+                    {
+                      id: "1-3",
+                      topic: "前端SOP梳理草案",
+                      expanded: false,
+                      children: [
+                        { id: "1-3-1", topic: `<img class="big-png" src="SOP.png"/>` },
+                      ],
+                    },
+                    {
+                      id: "1-4",
+                      topic: "技术学院学习笔记",
+                      expanded: false,
+                    },
                   ],
                   expanded: false,
                 },
@@ -2261,8 +2320,9 @@
                   id: "4",
                   topic: "团队协作",
                   children: [
-                    { id: "4-1", topic: "需求评审会议参与" },
-                    { id: "4-2", topic: "跨团队沟通（产品/后端）" },
+                    { id: "4-1", topic: "需求评审/发版会议参与" },
+                    { id: "4-2", topic: "跨团队沟通（产品/后端/测试）" },
+                    { id: "4-3", topic: `<img src="评价.jpg"/>` },
                   ],
                   expanded: false,
                 },
@@ -2294,7 +2354,7 @@
               datasets: [
                 {
                   label: "当前水平",
-                  data: [70, 80, 65, 75, 60, 85],
+                  data: [75, 73, 80, 75, 70, 89],
                   backgroundColor: "rgba(216, 30, 6, 0.2)",
                   borderColor: "rgba(216, 30, 6, 1)",
                   pointBackgroundColor: "rgba(216, 30, 6, 1)",
@@ -2305,7 +2365,7 @@
                 },
                 {
                   label: "初期水平",
-                  data: [50, 60, 45, 55, 40, 65],
+                  data: [50, 45, 55, 55, 40, 60],
                   backgroundColor: "rgba(26, 26, 26, 0.1)",
                   borderColor: "rgba(26, 26, 26, 0.8)",
                   pointBackgroundColor: "rgba(26, 26, 26, 0.8)",
