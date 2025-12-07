@@ -23,20 +23,25 @@
       .reveal {
         background: white;
         color: var(--sf-black);
-        width: 100vw !important; /* 强制占满视口宽度 */
-        height: 100vh !important; /* 强制占满视口高度 */
+        width: 100vw !important;
+        /* 强制占满视口宽度 */
+        height: 100vh !important;
+        /* 强制占满视口高度 */
         margin: 0 !important;
       }
 
       /* 幻灯片容器：占满Reveal容器，自适应窗口 */
       .reveal .slides > section {
-        width: 100% !important; /* 占满父容器宽度 */
-        height: 100% !important; /* 占满父容器高度 */
+        width: 100% !important;
+        /* 占满父容器宽度 */
+        height: 100% !important;
+        /* 占满父容器高度 */
         display: flex !important;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0 2vw; /* 用视口单位做内边距，自适应窗口 */
+        padding: 0 2vw;
+        /* 用视口单位做内边距，自适应窗口 */
         box-sizing: border-box;
       }
 
@@ -55,19 +60,23 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 10vh; /* 用视口高度做黑色条高度，自适应窗口 */
+        height: 10vh;
+        /* 用视口高度做黑色条高度，自适应窗口 */
         background: var(--sf-black);
         z-index: 1;
       }
 
       .cover-logo {
         position: absolute;
-        top: 3vh; /* 用视口高度做间距，自适应 */
+        top: 3vh;
+        /* 用视口高度做间距，自适应 */
         right: 3vw;
         z-index: 2;
       }
+
       .cover-logo img {
-        width: 10vw; /* 用视口宽度做Logo尺寸，最大不超过150px */
+        width: 10vw;
+        /* 用视口宽度做Logo尺寸，最大不超过150px */
         max-width: 150px;
         filter: brightness(0) invert(1);
       }
@@ -151,8 +160,10 @@
 
       .toc-list li:hover {
         cursor: pointer;
-        transform: translateX(8px); /* 向右轻微移动 */
-        box-shadow: 0 4px 12px rgba(216, 30, 6, 0.15); /* 加深阴影 */
+        transform: translateX(8px);
+        /* 向右轻微移动 */
+        box-shadow: 0 4px 12px rgba(216, 30, 6, 0.15);
+        /* 加深阴影 */
       }
 
       .toc-page-num {
@@ -171,12 +182,15 @@
       /* 放在顶部黑色横幅左侧，和logo水平对齐 */
       .page-title {
         position: absolute;
-        top: 3vh; /* 和logo的top一致 */
+        top: 3vh;
+        /* 和logo的top一致 */
         left: 3vw;
-        z-index: 2; /* 显示在黑色横幅上层 */
+        z-index: 2;
+        /* 显示在黑色横幅上层 */
         font-size: 2vw;
         font-weight: 700;
-        color: white; /* 和logo颜色一致（白色） */
+        color: white;
+        /* 和logo颜色一致（白色） */
       }
 
       /* ========== 自我介绍页内容样式调整 ========== */
@@ -230,6 +244,7 @@
         line-height: 1.8;
         text-align: left;
       }
+
       .info-item .label {
         color: var(--sf-gray);
         font-weight: 500;
@@ -278,7 +293,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         gap: 2vh;
       }
 
@@ -315,6 +330,7 @@
         color: #d81e06;
         font-weight: 700;
       }
+
       /* 需求交付效果概况页样式（修改后） */
       /* 创建瀑布流效果 */
       .delivery-grid {
@@ -355,9 +371,11 @@
         0% {
           transform: translateY(0px);
         }
+
         50% {
           transform: translateY(-10px);
         }
+
         100% {
           transform: translateY(0px);
         }
@@ -378,19 +396,23 @@
 
       /* 复杂度等级颜色 */
       .delivery-item:nth-child(1) .delivery-card {
-        border-top-color: #4caf50; /* 简单 - 绿色 */
+        border-top-color: #4caf50;
+        /* 简单 - 绿色 */
       }
 
       .delivery-item:nth-child(2) .delivery-card {
-        border-top-color: #2196f3; /* 中等 - 蓝色 */
+        border-top-color: #2196f3;
+        /* 中等 - 蓝色 */
       }
 
       .delivery-item:nth-child(3) .delivery-card {
-        border-top-color: #ff9800; /* 较复杂 - 橙色 */
+        border-top-color: #ff9800;
+        /* 较复杂 - 橙色 */
       }
 
       .delivery-item:nth-child(4) .delivery-card {
-        border-top-color: #d81e06; /* 复杂 - 红色 */
+        border-top-color: #d81e06;
+        /* 复杂 - 红色 */
       }
 
       .delivery-card::before {
@@ -555,7 +577,8 @@
       }
 
       .star-content {
-        flex: 1.2; /* 文本区域占比更大 */
+        flex: 1.2;
+        /* 文本区域占比更大 */
         /* padding: 2vh 2vw; */
       }
 
@@ -589,7 +612,8 @@
       .star-placeholder-inner img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* 保持图片比例，完整显示在容器内 */
+        object-fit: contain;
+        /* 保持图片比例，完整显示在容器内 */
       }
 
       .star-title {
@@ -607,8 +631,10 @@
         border-bottom: 2px solid var(--sf-red);
         display: inline-block;
         margin-top: 0.5vh;
-        padding: 0 0.8vw; /* 关键：给文字左右加间距，让下划线更舒展 */
-        padding-bottom: 0.3vh; /* 文字和下划线之间留一点空隙，更美观 */
+        padding: 0 0.8vw;
+        /* 关键：给文字左右加间距，让下划线更舒展 */
+        padding-bottom: 0.3vh;
+        /* 文字和下划线之间留一点空隙，更美观 */
       }
 
       .star-role-content {
@@ -666,29 +692,112 @@
         color: var(--sf-red);
       }
 
+      .star-image-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4vw;
+        margin-top: 5vh;
+      }
+
+      /* 网格项：统一边框+背景+固定高度 */
+      .image-item {
+        border-radius: 8px;
+        border-left: 4px solid var(--sf-red);
+        padding: 1vh 1vw;
+        /* 内边距，避免图片贴边 */
+        /* 固定高度，让所有外框高度一致 */
+        /* height: 25vh; */
+        /* 让图片在容器内居中显示 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-item:hover {
+        box-shadow: 0 8px 16px rgba(216, 30, 6, 0.15);
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+
+      /* 遮罩层：全屏半透明背景 */
+      .image-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        /* 默认隐藏 */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        /* 确保在最上层 */
+      }
+
+      /* 放大后的图片 */
+      .image-modal img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border: 4px solid white;
+        border-radius: 4px;
+      }
+
+      /* 关闭按钮 */
+      .image-modal .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      /* 图片适配容器 */
+      .image-item img {
+        max-width: 100%;
+        /* 不超过容器宽度 */
+        max-height: 100%;
+        /* 不超过容器高度 */
+        object-fit: contain;
+        /* 保持比例，完整显示 */
+      }
+
       /* 根节点（对应截图里的 .jmnode.root） */
       #jsmind-container .jsmind-inner .theme-primary .root {
-        background-color: var(--sf-red) !important; /* 用顺丰红色 */
+        background-color: var(--sf-red) !important;
+        /* 用顺丰红色 */
         color: white !important;
         font-size: 18px !important;
         font-weight: bold !important;
       }
+
       /* 子节点（对应截图里的 .jmnode.node） */
       #jsmind-container .jsmind-inner .theme-primary jmnode {
-        max-width: none !important; /* 取消最大宽度限制 */
-        background-color: var(--sf-light-gray) !important; /* 浅灰背景 */
-        color: var(--sf-black) !important; /* 黑色文字 */
-        border: 1px solid var(--sf-red) !important; /* 红色边框 */
+        max-width: none !important;
+        /* 取消最大宽度限制 */
+        background-color: var(--sf-light-gray) !important;
+        /* 浅灰背景 */
+        color: var(--sf-black) !important;
+        /* 黑色文字 */
+        border: 1px solid var(--sf-red) !important;
+        /* 红色边框 */
         font-size: 16px !important;
       }
 
       jmnode img {
-        width: auto; /* 固定宽度，根据需要调整 */
-        height: auto; /* 高度自适应，避免变形 */
+        width: auto;
+        /* 固定宽度，根据需要调整 */
+        height: auto;
+        /* 高度自适应，避免变形 */
         max-width: 500px;
-        max-height: 500px; /* 限制最大高度，防止过高 */
-        object-fit: contain; /* 保持图片比例，完整显示内容 */
-        vertical-align: middle; /* 与文字对齐 */
+        max-height: 500px;
+        /* 限制最大高度，防止过高 */
+        object-fit: contain;
+        /* 保持图片比例，完整显示内容 */
+        vertical-align: middle;
+        /* 与文字对齐 */
       }
 
       .big-png {
@@ -979,9 +1088,11 @@
         0% {
           transform: translate(-50%, -50%) scale(1);
         }
+
         50% {
           transform: translate(-50%, -50%) scale(1.2);
         }
+
         100% {
           transform: translate(-50%, -50%) scale(1);
         }
@@ -1016,12 +1127,15 @@
       .node-marker-1 {
         left: 10%;
       }
+
       .node-marker-2 {
         left: 30%;
       }
+
       .node-marker-3 {
         left: 50%;
       }
+
       .node-marker-4 {
         left: 70%;
       }
@@ -1082,6 +1196,7 @@
         font-size: 1.2vw;
         font-weight: 500;
       }
+
       /* 结尾 */
       .particles-container {
         position: absolute;
@@ -1127,18 +1242,23 @@
       .team-member:nth-child(1) {
         animation-delay: 0s;
       }
+
       .team-member:nth-child(2) {
         animation-delay: 0.2s;
       }
+
       .team-member:nth-child(3) {
         animation-delay: 0.4s;
       }
+
       .team-member:nth-child(4) {
         animation-delay: 0.6s;
       }
+
       .team-member:nth-child(5) {
         animation-delay: 0.8s;
       }
+
       .team-member:nth-child(6) {
         animation-delay: 1s;
       }
@@ -1153,9 +1273,11 @@
         0% {
           transform: translateY(0px);
         }
+
         50% {
           transform: translateY(-10px);
         }
+
         100% {
           transform: translateY(0px);
         }
@@ -1166,6 +1288,7 @@
         background: rgba(0, 0, 0, 0.1);
         color: var(--sf-red);
       }
+
       .reveal .controls {
         color: var(--sf-red);
         bottom: 2vh;
@@ -1173,8 +1296,14 @@
       }
     </style>
   </head>
+
   <body>
     <div class="reveal">
+      <!-- 图片放大弹窗 -->
+      <div class="image-modal">
+        <span class="close-btn">&times;</span>
+        <img id="modal-image" src="" alt="放大图" />
+      </div>
       <div class="slides">
         <div class="cover-header-bar"></div>
         <div class="cover-logo">
@@ -1303,7 +1432,7 @@
                 <span>• V5.4</span>
                 <span>• V5.5 SP1 SP3</span>
                 <span>• V5.6</span>
-                <span>• V5.7</span>
+                <span>• V5.7 5.8</span>
               </div>
             </div>
 
@@ -1319,21 +1448,10 @@
                   完成系统需求共计：<span class="stat-value">34个</span>
                 </div>
                 <div class="stat-item">
-                  优化历史问题：<span class="stat-value">4个</span>
-                </div>
-              </div>
-
-              <!-- 代码质量 -->
-              <div class="stat-card">
-                <div class="stat-title">代码质量</div>
-                <div class="stat-item">
                   代码量共计：<span class="stat-value">6361行</span>
                 </div>
                 <div class="stat-item">
-                  转测缺陷共计：<span class="stat-value">2个一般BUG</span>
-                </div>
-                <div class="stat-item">
-                  生产缺陷共计：<span class="stat-value">0个</span>
+                  工时总计：<span class="stat-value">xx人天</span>
                 </div>
               </div>
             </div>
@@ -1417,9 +1535,9 @@
 
                   <p class="star-subtitle">任务难点：</p>
                   <ul class="star-list">
-                    <li>从0开始新增一个菜单项；</li>
-                    <li>改造条件表达式弹窗组件；</li>
-                    <li>页面交互逻辑和数据处理复杂；</li>
+                    <li>从无到有完全新增一个系统页面；</li>
+                    <li>改造条件表达式弹窗组件适配需求；</li>
+                    <li>新增规则时多种组合逻辑和复杂表达式的数据处理；</li>
                   </ul>
                 </div>
               </div>
@@ -1427,7 +1545,8 @@
               <!-- 任务角色(T) - 可点击跳转 -->
               <div class="star-section">
                 <h4 class="star-section-title">
-                  <span class="star-icon">👤</span> 任务角色(T)：前端开发&联调；
+                  <span class="star-icon">👤</span>
+                  任务角色(T)：负责需求开发&联调；
                 </h4>
               </div>
             </div>
@@ -1441,66 +1560,446 @@
             </div>
           </div>
         </section>
-        >
 
-        <!-- STAR方法第三页：任务结果(R) + 点击展示实际网页 -->
+        <!-- STAR方法第二页：采取行动(A) -->
         <section>
           <div class="page-title back-to-toc">需求举例简述-STAR</div>
 
           <div class="star-container">
-            <!-- 左侧：任务结果(R) -->
-            <div class="star-content">
-              <div class="star-section">
-                <h4
-                  class="star-section-title star-clickable"
-                  id="jump-to-result"
-                >
-                  <span class="star-icon">✅</span> 任务结果(R)：
-                </h4>
-                <div class="star-text">
-                  <ul class="star-list">
-                    <li>
-                      成功完成海发控分理功能从0到1的开发，<span
-                        class="text-underline"
-                        >功能顺利上线</span
-                      >；
-                    </li>
-                    <li>
-                      支持按订单信息灵活分拣，<span class="text-underline"
-                        >满足海南免税店业务需求</span
-                      >，配合后续出库流程高效运转；
-                    </li>
-                    <li>
-                      改造的条件表达式弹窗组件<span class="text-underline"
-                        >可复用至其他类似需求</span
-                      >，提升后续开发效率；
-                    </li>
-                    <li>
-                      转测后仅1个轻微BUG，<span class="text-underline"
-                        >代码质量达标</span
-                      >，无生产问题反馈。
-                    </li>
-                  </ul>
+            <!-- 采取行动(A) -->
+            <div class="star-section">
+              <h4 class="star-section-title">
+                <span class="star-icon">🚀</span> 采取行动(A)：
+              </h4>
+              <div class="star-text">
+                <p class="star-subtitle">准备工作：</p>
+                <ul class="star-list">
+                  <li>
+                    <span class="text-underline">梳理页面模块构成</span
+                    >，使用AI辅助熟悉组件；
+                  </li>
+                  <li>
+                    与产品、后端确认页面流程及数据格式，<span
+                      class="text-underline"
+                      >对齐需求理解；</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="star-image-container">
+                <!-- 每个图片都套一个container -->
+                <div class="image-item">
+                  <img src="6.png" alt="页面模块构成图" />
+                </div>
+                <div class="image-item">
+                  <img src="8.png" alt="页面流程图" />
+                </div>
+                <div class="image-item">
+                  <img src="s1.jpg" alt="数据格式示意图" />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- iframe -->
         <section>
           <div class="page-title back-to-toc">需求举例简述-STAR</div>
-          <iframe
-            src="https://skawms.sit.sf-express.com/skawms/whse/rule/SortingRuleList"
-            style="
-              width: 100%;
-              height: 90vh;
-              padding-top: 10vh;
-              border: none;
-              border-radius: 8px;
-              position: absolute;
-            "
-          ></iframe>
+
+          <div class="star-container">
+            <!-- 采取行动(A) -->
+            <div class="star-section">
+              <h4 class="star-section-title">
+                <span class="star-icon">🚀</span> 采取行动(A)：
+              </h4>
+              <div class="star-text">
+                <p class="star-subtitle">开发过程：</p>
+                <ul class="star-list">
+                  <li>编写组件代码完成页面布局与交互设计；</li>
+                  <li>与后端联调，处理数据的渲染和传输；</li>
+                </ul>
+              </div>
+              <div class="star-image-container">
+                <!-- 每个图片都套一个container -->
+                <div class="image-item">
+                  <img src="10.png" alt="页面模块构成图" />
+                </div>
+                <div class="image-item">
+                  <img src="11.png" alt="页面流程图" />
+                </div>
+                <div class="image-item">
+                  <img src="12.png" alt="数据格式示意图" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- <section>
+          <div class="page-title back-to-toc">需求举例简述-STAR</div>
+
+          <div class="star-container">
+            <div class="star-section">
+              <h4 class="star-section-title">
+                <span class="star-icon">🚀</span> 采取行动(A)：
+              </h4>
+              <div class="star-text">
+                <p class="star-subtitle">发布前：</p>
+                <ul class="star-list">
+                  <li>转测前自测保证流程完整，数据无误；</li>
+                  <li>
+                    转测后<span class="text-underline">及时修复测试问题</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="star-image-container">
+                <div class="image-item">
+                  <img src="6.png" alt="页面模块构成图" />
+                </div>
+                <div class="image-item">
+                  <img src="7.png" alt="页面流程图" />
+                </div>
+                <div class="image-item">
+                  <img src="8.png" alt="数据格式示意图" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+
+        <!-- STAR方法第三页：任务结果(R) + 点击展示实际网页 -->
+        <section>
+          <div class="page-title back-to-toc">需求举例简述-STAR</div>
+
+          <div class="star-container">
+            <div class="star-section">
+              <h4 class="star-section-title star-clickable" id="jump-to-result">
+                <span class="star-icon">✅</span> 任务结果(R)：
+              </h4>
+              <div class="star-text">
+                <ul class="star-list">
+                  <li>
+                    成功完成海发控分理功能从0到1的开发，<span
+                      class="text-underline"
+                      >功能顺利上线</span
+                    >；
+                  </li>
+                  <li>
+                    支持按订单信息灵活分拣，<span class="text-underline"
+                      >满足海南免税店业务需求</span
+                    >，配合后续出库流程高效运转；
+                  </li>
+                  <li>
+                    改造的条件表达式弹窗组件<span class="text-underline"
+                      >可复用至其他类似需求</span
+                    >，提升后续开发效率；
+                  </li>
+                  <li>
+                    转测后仅1个轻微BUG，<span class="text-underline"
+                      >代码质量达标</span
+                    >，无生产问题反馈。
+                  </li>
+                </ul>
+              </div>
+              <div class="star-image-container">
+                <!-- 每个图片都套一个container -->
+                <div class="image-item">
+                  <img src="结果.jpg" alt="页面模块构成图" />
+                </div>
+                <div class="image-item">
+                  <img src="7.png" alt="页面流程图" />
+                </div>
+                <div class="image-item">
+                  <img src="8.png" alt="数据格式示意图" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 工作成果图片墙 -->
+        <section>
+          <!-- 顶部标题 -->
+          <div class="page-title back-to-toc">工作成果图片墙</div>
+
+          <!-- 图片墙容器 -->
+          <div style="width: 90%; margin-top: 10vh">
+            <!-- 图片墙标题 -->
+            <h2
+              style="font-size: 3vw; margin-bottom: 5vh; color: var(--sf-black)"
+            >
+              完成需求清单展示
+            </h2>
+
+            <!-- 响应式图片网格 -->
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2vw;
+                margin-bottom: 5vh;
+              "
+            >
+              <!-- 图片项1 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.4.jpg"
+                  alt="项目成果1"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    V5.4
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.08完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项2 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.5.jpg"
+                  alt="项目成果2"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    V5.5
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.09完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项3 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.5sp1.jpg"
+                  alt="项目成果3"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    V5.5 SP1
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.9完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项4 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.6.jpg"
+                  alt="项目成果4"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    V5.6
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.11完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项5 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.7.jpg"
+                  alt="项目成果5"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    v5.7
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.11完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项6 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.8.jpg"
+                  alt="项目成果6"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    v5.8
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.12完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项7 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="5.1sp1.jpg"
+                  alt="项目成果6"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    v5.1 SP1
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    2025.12完成
+                  </p>
+                </div>
+              </div>
+
+              <!-- 图片项8 -->
+              <div
+                class="gallery-item"
+                style="
+                  border-radius: 8px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="复核.jpg"
+                  alt="项目成果6"
+                  style="
+                    width: 100%;
+                    height: 25vh;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                  "
+                />
+                <div style="padding: 1.5vh 1vw; background: white">
+                  <p style="font-size: 1.5vw; font-weight: 600; margin: 0">
+                    复核重构
+                  </p>
+                  <p style="font-size: 1.2vw; color: #666; margin: 0.5vh 0 0 0">
+                    持续中
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 图片墙说明 -->
+            <!-- <p
+              style="
+                font-size: 1.5vw;
+                color: var(--sf-gray);
+                text-align: center;
+                margin-top: 3vh;
+              "
+            >
+              点击图片可查看详情 | 展示试用期各版本负责工作成果
+            </p> -->
+          </div>
         </section>
 
         <!-- 思维导图页HTML -->
@@ -1541,7 +2040,7 @@
                   <ul class="growth-list gain-list">
                     <li>
                       <span class="item-icon">📊</span>
-                      熟悉了SKAWMS系统基本逻辑和开发流程
+                      熟悉了SKAWMS系统基本业务和开发流程
                     </li>
                     <li>
                       <span class="item-icon">🤝</span>
@@ -1585,7 +2084,7 @@
                   </ul>
                 </div>
               </div>
-              
+
               <div class="stack-card summary">
                 <div class="summary-text">
                   每一次挑战都是成长的机会，每一次反思都是进步的阶梯
@@ -1668,12 +2167,12 @@
                 </div>
                 <div class="node-timeframe">6-12个月</div>
                 <div class="node-content">
-                  成为团队技术骨干，分享经验，推动技术创新与最佳实践。
+                  成为团队技术中坚力量，分享经验，推动技术AI创新与最佳实践。
                 </div>
                 <div class="node-tags">
-                  <span class="node-tag">技术骨干</span>
+                  <span class="node-tag">中坚力量</span>
                   <span class="node-tag">知识分享</span>
-                  <span class="node-tag">创新驱动</span>
+                  <span class="node-tag">AI创新驱动</span>
                 </div>
               </div>
             </div>
@@ -1749,7 +2248,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 
     <!-- 本地引入jsMind的样式（从node_modules读取） -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jsmind@0.9.0/style/jsmind.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/jsmind@0.9.0/style/jsmind.css"
+    />
     <!-- 本地引入jsMind的脚本（从node_modules读取） -->
     <script src="//cdn.jsdelivr.net/npm/jsmind@0.9.0/es6/jsmind.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jsmind@0.9.0/es6/jsmind.draggable-node.js"></script>
@@ -1846,7 +2348,7 @@
 
               // 鼠标拖动
               this.container.addEventListener("mousedown", (e) => {
-                if (this.scale <= 1) return; // 只有在放大时才能拖动
+                // if (this.scale <= 1) return; // 只有在放大时才能拖动
 
                 this.isDragging = true;
                 this.startX = e.clientX - this.translateX;
@@ -2028,55 +2530,122 @@
             }
           });
 
-          // 为任务角色卡片添加悬停和点击效果
-          document.addEventListener("DOMContentLoaded", function () {
-            const roleCard = document.querySelector('[id="jump-to-action"]');
+          // 获取元素
+          const imageItems = document.querySelectorAll(".image-item img");
+          const modal = document.querySelector(".image-modal");
+          const modalImg = document.getElementById("modal-image");
+          const closeBtn = document.querySelector(".close-btn");
 
-            if (roleCard) {
-              // 添加悬停效果
-              roleCard.addEventListener("mouseenter", function () {
-                this.style.transform = "translateY(-8px) scale(1.02)";
-              });
-
-              roleCard.addEventListener("mouseleave", function () {
-                this.style.transform = "";
-              });
-
-              // 添加点击跳转效果
-              roleCard.addEventListener("click", function () {
-                // 添加点击动画
-                this.style.transform = "scale(0.95)";
-                setTimeout(() => {
-                  this.style.transform = "";
-                  // 执行原有的跳转逻辑
-                  const currentIndex = deck.getIndices().h;
-                  deck.slide(currentIndex + 1);
-                }, 150);
-              });
-            }
-
-            // 为整个页面添加进入动画
-            const starSections = document.querySelectorAll(".star-section");
-            starSections.forEach((section, index) => {
-              section.style.opacity = "0";
-              section.style.transform = "translateY(20px)";
-
-              setTimeout(() => {
-                section.style.transition =
-                  "opacity 0.6s ease, transform 0.6s ease";
-                section.style.opacity = "1";
-                section.style.transform = "translateY(0)";
-              }, 300 * index);
+          // 点击图片打开放大层
+          imageItems.forEach((img) => {
+            img.addEventListener("click", () => {
+              modal.style.display = "flex"; // 显示遮罩层
+              modalImg.src = img.src; // 设置放大图的路径
             });
           });
 
-          document
-            .getElementById("jump-to-result")
-            .addEventListener("click", () => {
-              // 假设行动页是当前页的下一页（索引+1）
-              const currentIndex = deck.getIndices().h;
-              deck.slide(currentIndex + 1);
+          // 点击关闭按钮或遮罩层关闭
+          closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+          });
+
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+              // 点击遮罩层空白处也关闭
+              modal.style.display = "none";
+            }
+          });
+
+          // 图片墙点击放大功能
+          document.querySelectorAll(".gallery-item").forEach((item) => {
+            item.addEventListener("click", function () {
+              const imgSrc = this.querySelector("img").src;
+              const modal = document.querySelector(".image-modal");
+              const modalImg = document.getElementById("modal-image");
+
+              modalImg.src = imgSrc;
+              modal.style.display = "flex";
             });
+          });
+
+          // 为任务角色卡片添加悬停和点击效果
+          const roleCard = document.querySelector('[id="jump-to-action"]');
+
+          if (roleCard) {
+            // 添加悬停效果
+            roleCard.addEventListener("mouseenter", function () {
+              this.style.transform = "translateY(-8px) scale(1.02)";
+            });
+
+            roleCard.addEventListener("mouseleave", function () {
+              this.style.transform = "";
+            });
+
+            // 添加点击跳转效果
+            roleCard.addEventListener("click", function () {
+              // 添加点击动画
+              this.style.transform = "scale(0.95)";
+              setTimeout(() => {
+                this.style.transform = "";
+                // 执行原有的跳转逻辑
+                const currentIndex = deck.getIndices().h;
+                deck.slide(currentIndex + 1);
+              }, 150);
+            });
+          }
+
+          // 为整个页面添加进入动画
+          const starSections = document.querySelectorAll(".star-section");
+          starSections.forEach((section, index) => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(20px)";
+
+            setTimeout(() => {
+              section.style.transition =
+                "opacity 0.6s ease, transform 0.6s ease";
+              section.style.opacity = "1";
+              section.style.transform = "translateY(0)";
+            }, 300 * index);
+          });
+
+          const roleCard1 = document.querySelector('[id="jump-to-result"]');
+
+          if (roleCard1) {
+            // 添加悬停效果
+            roleCard1.addEventListener("mouseenter", function () {
+              this.style.transform = "translateY(-8px) scale(1.02)";
+            });
+
+            roleCard1.addEventListener("mouseleave", function () {
+              this.style.transform = "";
+            });
+
+            // 添加点击跳转效果
+            roleCard1.addEventListener("click", function () {
+              // 添加点击动画
+              this.style.transform = "scale(0.95)";
+              setTimeout(() => {
+                this.style.transform = "";
+                // 执行原有的跳转逻辑
+                const currentIndex = deck.getIndices().h;
+                deck.slide(currentIndex + 1);
+              }, 150);
+            });
+          }
+
+          // 为整个页面添加进入动画
+          const starSections1 = document.querySelectorAll(".star-section");
+          starSections1.forEach((section, index) => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(20px)";
+
+            setTimeout(() => {
+              section.style.transition =
+                "opacity 0.6s ease, transform 0.6s ease";
+              section.style.opacity = "1";
+              section.style.transform = "translateY(0)";
+            }, 300 * index);
+          });
 
           const ctx = document.getElementById("workChart").getContext("2d");
           new Chart(ctx, {
@@ -2085,13 +2654,6 @@
             data: {
               labels: ["8月", "9月", "10月", "11月"],
               datasets: [
-                {
-                  label: "BUG",
-                  data: [0, 0, 0, 2],
-                  backgroundColor: "rgba(51, 51, 51, 0.7)",
-                  borderColor: "rgba(26, 26, 26, 1)",
-                  borderWidth: 1,
-                },
                 {
                   label: "需求",
                   data: [1, 10, 14, 9],
@@ -2169,7 +2731,7 @@
                 },
                 title: {
                   display: true,
-                  text: "试用期BUG/需求/工时数量统计",
+                  text: "试用期需求/工时数量统计",
                   font: { size: 14 },
                 },
                 tooltip: {
@@ -2257,8 +2819,47 @@
                         { id: "2-2-2", topic: "主子系统通信方案学习" },
                       ],
                     },
+                    {
+                      id: "2-3",
+                      topic: "系统治理",
+                      children: [
+                        {
+                          id: "2-3-1",
+                          topic: "发现和解决的系统问题数量：4个",
+                          children: [
+                            {
+                              id: "2-3-1-1",
+                              topic: `<img src="修复问题.jpg"/>`,
+                            },
+                          ],
+                          expanded: false,
+                        },
+                        {
+                          id: "2-3-2",
+                          topic: "优化和拓展业务组件的个数：3个",
+                          children: [
+                            {
+                              id: "2-3-2-1",
+                              topic: `<img src="组件.jpg"/>`,
+                            },
+                          ],
+                          expanded: false,
+                        },
+                        {
+                          id: "2-3-3",
+                          topic: "SKA 前端出库运营参数梳理",
+                          children: [
+                            {
+                              id: "2-3-3-1",
+                              topic: `<img src="运营参数.png"/>`,
+                            },
+                          ],
+                          expanded: false,
+                        },
+                      ],
+                    },
                   ],
-                  expanded: false,
+                  expanded: true,
                 },
                 {
                   id: "3",
@@ -2267,15 +2868,6 @@
                     { id: "3-1", topic: "治水流水线学习" },
                     { id: "3-2", topic: "神策监控平台使用" },
                     { id: "3-3", topic: "代码规范与评审参与" },
-                    { id: "3-4", topic: "SKA 前端出库运营参数梳理",
-                      children: [
-                        {
-                          id: "3-4-1",
-                          topic: `<img src="运营参数.png"/>`,
-                        },
-                      ],
-                      expanded: true,
-                     },
                   ],
                   expanded: false,
                 },
@@ -2305,7 +2897,10 @@
                       topic: "前端SOP梳理草案",
                       expanded: false,
                       children: [
-                        { id: "1-3-1", topic: `<img class="big-png" src="SOP.png"/>` },
+                        {
+                          id: "1-3-1",
+                          topic: `<img class="big-png" src="SOP.png"/>`,
+                        },
                       ],
                     },
                     {
@@ -2354,7 +2949,7 @@
               datasets: [
                 {
                   label: "当前水平",
-                  data: [75, 73, 80, 75, 70, 89],
+                  data: [73, 68, 80, 75, 70, 85],
                   backgroundColor: "rgba(216, 30, 6, 0.2)",
                   borderColor: "rgba(216, 30, 6, 1)",
                   pointBackgroundColor: "rgba(216, 30, 6, 1)",
