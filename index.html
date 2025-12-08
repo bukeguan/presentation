@@ -673,6 +673,16 @@
         font-size: 2.5vw;
       }
 
+      .star-content-row {
+        display: flex; /* 横向排列 */
+        gap: 4vw; /* 两个文本框之间的间距 */
+        width: 90%; /* 控制整体宽度，避免太宽 */
+        margin: 2vh 0; /* 上下留白 */
+      }
+      .star-content-row .star-text {
+        flex: 1; /* 两个文本框平分宽度 */
+      }
+
       .star-text {
         font-size: 1.6vw;
         line-height: 1.8;
@@ -706,7 +716,7 @@
         padding: 1vh 1vw;
         /* 内边距，避免图片贴边 */
         /* 固定高度，让所有外框高度一致 */
-        /* height: 25vh; */
+        height: 25vh;
         /* 让图片在容器内居中显示 */
         display: flex;
         align-items: center;
@@ -1442,16 +1452,16 @@
               <div class="stat-card">
                 <div class="stat-title">需求统计</div>
                 <div class="stat-item">
-                  参与版本共计：<span class="stat-value">6个</span>
+                  参与版本共计：<span class="stat-value">7个</span>
                 </div>
                 <div class="stat-item">
-                  完成系统需求共计：<span class="stat-value">34个</span>
+                  完成系统需求共计：<span class="stat-value">38个</span>
                 </div>
                 <div class="stat-item">
                   代码量共计：<span class="stat-value">6361行</span>
                 </div>
                 <div class="stat-item">
-                  工时总计：<span class="stat-value">xx人天</span>
+                  工时总计：<span class="stat-value">68人天</span>
                 </div>
               </div>
             </div>
@@ -1589,13 +1599,13 @@
               <div class="star-image-container">
                 <!-- 每个图片都套一个container -->
                 <div class="image-item">
-                  <img src="6.png" alt="页面模块构成图" />
+                  <img src="s1.jpg" alt="页面模块构成图" />
                 </div>
                 <div class="image-item">
-                  <img src="8.png" alt="页面流程图" />
+                  <img src="10.png" alt="页面流程图" />
                 </div>
                 <div class="image-item">
-                  <img src="s1.jpg" alt="数据格式示意图" />
+                  <img src="开发前1.png" alt="数据格式示意图" />
                 </div>
               </div>
             </div>
@@ -1611,23 +1621,40 @@
               <h4 class="star-section-title">
                 <span class="star-icon">🚀</span> 采取行动(A)：
               </h4>
-              <div class="star-text">
-                <p class="star-subtitle">开发过程：</p>
-                <ul class="star-list">
-                  <li>编写组件代码完成页面布局与交互设计；</li>
-                  <li>与后端联调，处理数据的渲染和传输；</li>
-                </ul>
+              <div class="star-content-row">
+                <div class="star-text">
+                  <p class="star-subtitle">开发过程：</p>
+                  <ul class="star-list">
+                    <li>编写组件代码完成页面布局与交互设计；</li>
+                    <li>与后端联调，处理数据的渲染和传输；</li>
+                  </ul>
+                </div>
+                <div class="star-text">
+                  <p class="star-subtitle">难点：</p>
+                  <ul class="star-list">
+                    <li>
+                      <span class="text-underline"
+                        >两种新增分理规则模式，改造表达式编辑组件；</span
+                      >
+                    </li>
+                    <li>
+                      <span class="text-underline"
+                        >保存与编辑时的数据处理；</span
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div class="star-image-container">
                 <!-- 每个图片都套一个container -->
                 <div class="image-item">
-                  <img src="10.png" alt="页面模块构成图" />
+                  <img src="11.png" alt="页面模块构成图" />
                 </div>
                 <div class="image-item">
-                  <img src="11.png" alt="页面流程图" />
+                  <img src="开发中1.png" alt="页面流程图" />
                 </div>
                 <div class="image-item">
-                  <img src="12.png" alt="数据格式示意图" />
+                  <img src="开发中2.png" alt="数据格式示意图" />
                 </div>
               </div>
             </div>
@@ -1684,7 +1711,7 @@
                     >；
                   </li>
                   <li>
-                    支持按订单信息灵活分拣，<span class="text-underline"
+                    支持多种模式设置分理规则，<span class="text-underline"
                       >满足海南免税店业务需求</span
                     >，配合后续出库流程高效运转；
                   </li>
@@ -1692,11 +1719,6 @@
                     改造的条件表达式弹窗组件<span class="text-underline"
                       >可复用至其他类似需求</span
                     >，提升后续开发效率；
-                  </li>
-                  <li>
-                    转测后仅1个轻微BUG，<span class="text-underline"
-                      >代码质量达标</span
-                    >，无生产问题反馈。
                   </li>
                 </ul>
               </div>
@@ -1706,10 +1728,10 @@
                   <img src="结果.jpg" alt="页面模块构成图" />
                 </div>
                 <div class="image-item">
-                  <img src="7.png" alt="页面流程图" />
+                  <img src="结果1.png" alt="页面流程图" />
                 </div>
                 <div class="image-item">
-                  <img src="8.png" alt="数据格式示意图" />
+                  <img src="结果2.png.jpg" alt="数据格式示意图" />
                 </div>
               </div>
             </div>
@@ -1734,7 +1756,7 @@
             <div
               style="
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                grid-template-columns: repeat(4, 1fr);
                 gap: 2vw;
                 margin-bottom: 5vh;
               "
@@ -1906,7 +1928,7 @@
                 "
               >
                 <img
-                  src="5.8.jpg"
+                  src="5.8.png"
                   alt="项目成果6"
                   style="
                     width: 100%;
@@ -1937,7 +1959,7 @@
                 "
               >
                 <img
-                  src="5.1sp1.jpg"
+                  src="5.1sp1.png"
                   alt="项目成果6"
                   style="
                     width: 100%;
@@ -1968,7 +1990,7 @@
                 "
               >
                 <img
-                  src="复核.jpg"
+                  src="复核重构.png"
                   alt="项目成果6"
                   style="
                     width: 100%;
@@ -2656,14 +2678,14 @@
               datasets: [
                 {
                   label: "需求",
-                  data: [1, 10, 14, 9],
+                  data: [1, 10, 14, 13],
                   backgroundColor: "#1a1a1a",
                   borderColor: "rgba(51, 51, 51, 1)",
                   borderWidth: 1,
                 },
                 {
                   label: "工时",
-                  data: [2, 14, 22.5, 23],
+                  data: [2, 14, 22.5, 29.5],
                   backgroundColor: "#d81e06",
                   borderColor: "rgba(216, 30, 6, 1)",
                   borderWidth: 1,
@@ -2672,7 +2694,7 @@
                 {
                   label: "工时趋势",
                   type: "line", // 类型为折线
-                  data: [2, 14, 22.5, 23], // 和工时数据一致
+                  data: [2, 14, 22.5, 29.5], // 和工时数据一致
                   borderColor: "#d81e06", // 匹配工时的黑色
                   backgroundColor: "transparent", // 折线无填充
                   borderWidth: 2, // 折线粗细
@@ -2681,6 +2703,7 @@
                   pointRadius: 4, // 数据点大小
                   hidden: true, // 初始隐藏
                   order: 4, // 让折线显示在柱状图上方
+                  yAxisID: "y1", // 使用主Y轴
                 },
               ],
             },
@@ -2707,12 +2730,18 @@
               scales: {
                 y: {
                   beginAtZero: true,
+                  max: 35,
                   title: {
                     display: true,
                     text: "数量",
                     font: { size: 12 },
                   },
                   ticks: { font: { size: 11 } },
+                },
+                y1: {
+                  beginAtZero: true,
+                  max: 30,
+                  display: false, // 隐藏次Y轴
                 },
                 x: {
                   ticks: { font: { size: 11 } },
@@ -3050,7 +3079,7 @@
 
             // 创建粒子数组
             const particles = [];
-            const particleCount = 100;
+            const particleCount = 150;
 
             for (let i = 0; i < particleCount; i++) {
               particles.push(new Particle());
