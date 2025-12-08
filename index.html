@@ -1293,6 +1293,10 @@
         }
       }
 
+      #hardPoint:hover {
+        cursor: pointer;
+      }
+
       /* ========== Reveal组件调整 ========== */
       .reveal .progress {
         background: rgba(0, 0, 0, 0.1);
@@ -1663,24 +1667,37 @@
                 <span class="star-icon">🚀</span> 采取行动(A)：
               </h4>
               <div class="star-content-row">
-                <div class="star-text">
+                <div id="develop" class="star-text">
                   <p class="star-subtitle">开发过程：</p>
                   <ul class="star-list">
-                    <li>编写组件代码完成页面布局与交互设计；</li>
-                    <li>与后端联调，处理数据的渲染和传输；</li>
+                    <li>模块化编写组件代码实现布局与交互逻辑；</li>
+                    <li>联调完成数据渲染、传输全流程；</li>
                   </ul>
                 </div>
-                <div class="star-text">
+                <div id="solution" class="star-text" style="display: none">
+                  <p class="star-subtitle">解决办法：</p>
+                  <ol class="star-list">
+                    <li>
+                      使用<span class="text-underline">AI辅助</span
+                      >方案决策、逻辑梳理、代码简化
+                    </li>
+                    <li>
+                      使用边界数据<span class="text-underline">充分自测</span
+                      >，确保流程完整
+                    </li>
+                  </ol>
+                </div>
+                <div id="hardPoint" class="star-text">
                   <p class="star-subtitle">难点：</p>
                   <ul class="star-list">
                     <li>
                       <span class="text-underline"
-                        >两种新增分理规则模式，改造表达式编辑组件；</span
+                        >需适配两种分理规则模式，四种策略规则数据来源，改造表达式弹窗组件；</span
                       >
                     </li>
                     <li>
                       <span class="text-underline"
-                        >保存与编辑时的数据处理；</span
+                        >保存与编辑时的数据需额外处理；</span
                       >
                     </li>
                   </ul>
@@ -1695,7 +1712,7 @@
                   <img src="开发中1.png" alt="页面流程图" />
                 </div>
                 <div class="image-item">
-                  <img src="开发中2.png" alt="数据格式示意图" />
+                  <img id="changeImg" src="开发中2.png" alt="数据格式示意图" />
                 </div>
               </div>
             </div>
@@ -2362,6 +2379,27 @@
             item.addEventListener("click", () => {
               deck.slide(1); // 目录页对应的索引是1
             });
+          });
+
+          document.getElementById("hardPoint").addEventListener("click", () => {
+            const solution = document.getElementById("solution");
+            const develop = document.getElementById("develop");
+            // const changeImg = document.getElementById("changeImg");
+
+            // 判断“解决办法”当前是显示还是隐藏
+            if (solution.style.display === "block") {
+              // 若“解决办法”显示 → 隐藏它，同时显示“开发过程”
+              solution.style.display = "none";
+              develop.style.display = "block";
+              // 替换图片为“开发过程”对应的图片
+              // changeImg.src = "开发中2.png";
+            } else {
+              // 若“解决办法”隐藏 → 显示它，同时隐藏“开发过程”
+              solution.style.display = "block";
+              develop.style.display = "none";
+              // 替换图片为“解决办法”对应的图片
+              // changeImg.src = "开发前1.png";
+            }
           });
 
           // 在 Reveal 初始化之后添加以下代码
