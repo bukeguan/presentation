@@ -1304,10 +1304,51 @@
         bottom: 2vh;
         right: 2vw;
       }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 初始隐藏所有幻灯片，只在加载完成后显示第一页 */
+      .reveal .slides > section:not(:first-of-type) {
+        display: none;
+      }
     </style>
   </head>
 
   <body>
+    <!-- 加载动画 -->
+    <div
+      id="loader"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          width: 50px;
+          height: 50px;
+          border: 5px solid #eee;
+          border-top: 5px solid #3498db;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        "
+      ></div>
+    </div>
     <div class="reveal">
       <!-- 图片放大弹窗 -->
       <div class="image-modal">
@@ -2296,6 +2337,13 @@
           plugins: [RevealHighlight, RevealNotes, RevealMarkdown],
         })
         .then(() => {
+          // 初始化完成后执行：隐藏加载动画 + 显示所有幻灯片
+          document.getElementById("loader").style.display = "none";
+          document
+            .querySelectorAll(".reveal .slides > section")
+            .forEach((section) => {
+              section.style.display = "block"; // 恢复所有幻灯片的显示
+            });
           // 原更新总页数的代码
           // document.getElementById("total-slides").textContent = deck.getTotalSlides();
 
